@@ -6,13 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/07/29 18:01:05 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/07/29 18:27:18 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "stdio.h"
-#include <readline/readline.h>
 
 void	minishell(void)
 {

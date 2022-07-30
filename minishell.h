@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/07/28 18:11:48 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/07/30 17:02:43 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,73 @@
 # include <stdlib.h>
 // -->malloc,free, exit
 # include <unistd.h>
-// -->write, read, close, fork, getcwd, chdir, execve, dup, dup2, pipe
-	// --> char *getcwd(char *buffer, size_t size); (get current working directory)
-			// The getcwd() function copies the absolute path-
-			//  name of the current working directory into the
-			//  memory referenced by buf and returns a pointer
-			//  to buf.  The size argument is the size, in
-			//  bytes, of the array referenced by buf.
-
-			//  If buf is NULL, space is allocated as necessary
-			//  to store the pathname and size is ignored.
-			//  This space may later be free(3)'d.
+// -->write, read, close, fork,, chdir, execve, dup, dup2, pipe, access,
+// -->getcwd, unlink, isatty, ttyname, ttyslot
 	// --> int chdir(const char *path);
 			// the path is the Directory path which the user want
 			// to make the current working directory.
 
 			// Return Value: This command returns zero (0) on success.
 			// -1 is returned on an error and errno is set appropriately.
+	// int access(const char *path, int amode);
+			// the access() system call checks the accessibility of the file named by
+			// the path argument for the access permissions indicated by the mode argu-
+			// ment.  The value of mode is either the bitwise-inclusive OR of the access
+			// permissions to be checked (R_OK for read permission, W_OK for write per-
+			// mission, and X_OK for execute/search permission), or the existence test
+			// (F_OK).
+
+	// char *getcwd(char *buf, size_t size);
+			// 	The getcwd() function copies an absolute pathname of the current
+			// 	working directory to the array pointed to by buf, which is of
+			// length size.
+
+			// If the length of the absolute pathname of the current working
+			// directory, including the terminating null byte, exceeds size
+			// bytes, NULL is returned, and errno is set to ERANGE; an
+			// application should check for this error, and allocate a larger
+			// buffer if necessary.
+
+	// int unlink(const char *pathname);
+			// deletes a name from the file system.
+			// If that name was the last link to a file and no processes
+			// have the file open the file is deleted and the space
+			// it was using is made available for reuse.
+			// If the name was the last link to a file but any processes
+			// still have the file open the file will remain in existence
+			// until the last file descriptor referring to it is closed.
+
+	// int isatty(int fd);
+			// The isatty() function tests whether fd is an open file descriptor
+			// referring to a terminal.
+
+	// char *ttyname(int fd);
+		// The function ttyname() returns a pointer to the null-terminated
+		// pathname of the terminal device that is open on the file
+		// descriptor fd, or NULL on error (for example, if fd is not
+		// connected to a terminal).  The return value may point to static
+		// data, possibly overwritten by the next call.
+
+	// int ttyslot(void);
+		// 	If successful, this function returns the slot number.  On error
+		// (e.g., if none of the file descriptors 0, 1, or 2 is associated
+		// with a terminal that occurs in this data base) it returns 0 on
+		// UNIX V6 and V7 and BSD-like systems, but -1 on System V-like
+		// systems.
+
+# include <stdio.h>
+// -->printf, perror
+	// void perror(const char *str);
+			// prints a textual description of the error code
+			// currently stored in the system variable errno to stderr.
+		
+			// the contents of the null-terminated byte string pointed to by s,
+			// followed by ": " (unless s is a null pointer
+			// or the character pointed to by s is the null character)
+			
+			// implementation-defined error message string describing
+			// the error code stored in errno, followed by '\n'.
+			// The error message string is identical to the result of strerror(errno)
 
 # include <fcntl.h>
 // -->open,
@@ -81,7 +131,7 @@
 			// filled with accounting information about the child. See getrusage(2) for details.
 
 # include <signal.h>
-	// -->signal
+	// -->signal, kill, sigaction, sigemptset, sigaddset
 		// void (*signal(int sig, void (*func)(int)))(int);
 		//   or in the equivalent but easier to read type-def'd version:
 
@@ -89,7 +139,7 @@
 
 		//  sig_t
 		//  signal(int sig, sig_t func);
-		
+
 			// Signals allow the manipulation of a process
 			//  from outside its domain, as well as allowing
 			//  the process to manipulate itself or copies of
@@ -105,13 +155,54 @@
 			//  (see tty(4)).  Signals are optionally generated
 			//  when a process resumes after being stopped,
 			//  when the status of child processes changes, or
-			//  when input is ready at the control terminal			==> for CTRL C, CTRL D, CTRL /??
-	// -->kill
-		// int kill(pid_t pid, int sig);
+			//  when input is ready at the control terminal		==> for CTRL C, CTRL D, CTRL /??
+
+	// int kill(pid_t pid, int sig);
 			// The kill utility sends a signal to the processes specified by the pid operands.
 
 			//  Only the super-user may send signals to other
 			//  users' processes.
+
+	// int sigaction(int sig, const struct sigaction *restrict act, struct sigaction *restrict oact);
+
+		// 	struct  sigaction {
+		//          union __sigaction_u __sigaction_u;  /* signal handler */
+		//          sigset_t sa_mask;               /* signal mask to apply */
+		//          int     sa_flags;               /* see signal options below */
+		//  };
+
+		//  union __sigaction_u {
+		//          void    (*__sa_handler)(int);
+		//          void    (*__sa_sigaction)(int, siginfo_t *,
+		//                         void *);
+		//  };
+
+		//  #define sa_handler      __sigaction_u.__sa_handler
+		//  #define sa_sigaction    __sigaction_u.__sa_sigaction
+			// The sigaction() system call assigns an action for a signal specified by
+			//  sig.  If act is non-zero, it specifies an action (SIG_DFL, SIG_IGN, or a
+			//  handler routine) and mask to be used when delivering the specified sig-
+			//  nal.  If oact is non-zero, the previous handling information for the sig-
+			//  nal is returned to the user.
+
+			//  Once a signal handler is installed, it normally remains installed until
+			//  another sigaction() system call is made, or an execve(2) is performed.  A
+			//  signal-specific default action may be reset by setting sa_handler to
+			//  SIG_DFL.  The defaults are process termination, possibly with core dump;
+			//  no action; stopping the process; or continuing the process.  See the sig-
+			//  nal list below for each signal's default action.  If sa_handler is
+			//  SIG_DFL, the default action for the signal is to discard the signal, and
+			//  if a signal is pending, the pending signal is discarded even if the sig-
+			//  nal is masked.  If sa_handler is set to SIG_IGN current and pending
+			//  instances of the signal are ignored and discarded.
+
+	// int sigemptyset(sigset_t *set);
+		// sigemptyset() initializes the signal set given by set to empty,
+		// with all signals excluded from the set.
+
+	// int sigaddset(sigset_t *set, int signum);
+		// igaddset() adds and deletes respectively signal signum from set.
+
 # include <sys/stat.h>
 	// stat, lstat, fstat
 		// int stat(const char *restrict pathname, struct stat *restrict statbuf);
@@ -150,7 +241,12 @@
 			// with dirp.  A successful call to closedir() also closes the
 			// underlying file descriptor associated with dirp.  The directory
 			// tream descriptor dirp is not available after this call.
+
+# include <sys/ioctl.h>
+// -->ioctl
+	// int ioctl(int fd, unsigned long request, ...);
 	
+
 # include <string.h>
 	// strerror
 		// char *strerror(int errnum);
@@ -162,28 +258,49 @@
 			// must not be modified by the application, but may be modified by a
 			// subsequent call to strerror() or strerror_l().  No other library
 			// function, including perror(3), will modify this string.
+
+# include <readline/readline.h>
+# include <readline/history.h>
+// readline, rl_clear_history, rl_on_new_line, rl_replace_line, rl_redisplay
+// add_history
+	//char * readline (const char *prompt);
+		// readline will read a line from the terminal and return it, using
+		//prompt as a prompt.  If prompt is NULL or the empty string, no
+		//prompt is issued.  The line returned is allocated with malloc(3);
+		//the caller must free it when finished.  The line returned has the
+		//final newline removed, so only the text of the line remains.
+
+		//readline offers editing capabilities while the user is entering
+		//the line.  By default, the line editing commands are similar to
+		//those of emacs.  A vi-style line editing interface is also
+		//available.
+
+		// 	readline returns the text of the line read.  A blank line returns
+		//    the empty string.  If EOF is encountered while reading a line,
+		//    and the line is empty, NULL is returned.  If an EOF is read with
+		//    a non-empty line, it is treated as a newline.
+
+	// void rl_clear_history (void) [Function]
+		// Clear the history list by deleting all of the entries,
+		// in the same manner as the History
+		// library’s clear_history() function. This differs from clear_history 
+		// because it frees private data Readline saves in the history list.
+
+	// int rl_on_new_line (void) [Function]
+		// Tell the update functions that we have moved onto a new (empty) line,
+		// usually after outputting a newline.
+
+	// void rl_replace_line (const char *text, int clear undo) [Function]
+		// Replace the contents of rl_line_buffer with text.
+		// The point and mark are preserved, if possible.
+		// If clear undo is non-zero, the undo list associated with the current
+		// line is cleared.
+
+	// void rl_redisplay (void) [Function]
+		// Change what’s displayed on the screen to reflect the current
+		// contents of rl_line_buffer
+
+	//void	add_history(const char *)---> the input in the terminal
+
 	
-# include <errno.h>
-	// errno
-		// The <errno.h> header file defines the integer variable errno,
-		// which is set by system calls and some library functions in the
-		// event of an error to indicate what went wrong.
-
-		//errno
-		//  The value in errno is significant only when the return value of
-		//  the call indicated an error (i.e., -1 from most system calls; -1
-		//  or NULL from most library functions); a function that succeeds is
-		//  allowed to change errno.  The value of errno is never set to zero
-		//  by any system call or library function.
-
-		// Error numbers and names
-		// Valid error numbers are all positive numbers.  The <errno.h>
-		// header file defines symbolic names for each of the possible error
-		// numbers that may appear in errno.
-
-		// All the error names specified by POSIX.1 must have distinct
-		// values, with the exception of EAGAIN and EWOULDBLOCK, which may
-		// be the same.  On Linux, these two have the same value on all
-		// architectures.
-
 #endif
