@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 17:30:11 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/03 17:55:12 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EXECUTE_H
 
 # include <unistd.h>
+#include <stdio.h>
 # include <stdlib.h>
 # include <errno.h>
 # include "../libs/libs.h"
@@ -23,6 +24,7 @@
 #  define MAX_PATH 100
 # endif
 
+int		builtin_pwd(void);
 char	*ft_get_path(char **env, char *cmd);
 
 #endif
