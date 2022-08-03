@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 17:15:49 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/03 21:45:55 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	minishell(void)
 		if (ft_strcmp(buf, "exit") == 0)
 		{
 			free(buf);
-			printf("exit\n");
+			ft_printf("exit\n");
 			return ;
 		}
 		add_history(buf);
