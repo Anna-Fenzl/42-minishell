@@ -6,9 +6,25 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/01 19:21:24 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/03 17:16:55 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+TO DO:
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # include <stdlib.h>
 -->malloc,free, exit
@@ -285,10 +301,12 @@ add_history
 		library’s clear_history() function. This differs from clear_history 
 		because it frees private data Readline saves in the history list.
 
+
 	int rl_on_new_line (void) [Function]
 		Tell the update functions that we have moved onto a new (empty) line,
 		usually after outputting a newline.
 
+-->not found by compiler
 	void rl_replace_line (const char *text, int clear undo) [Function]
 		Replace the contents of rl_line_buffer with text.
 		The point and mark are preserved, if possible.
