@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/04 14:47:24 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/04 15:04:56 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	minishell(void)
 			ft_printf("exit\n");
 			return ;
 		}
+		printf("%s\n", buf);
+		ft_printf("%i\n", ft_splitlen(ft_split(buf, ' ')));
 		add_history(buf);
 		free(buf);
 	}
@@ -36,7 +38,6 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc != 1)
 		return (0);
-	testing();
-	// minishell();
+	minishell();
 	return (0);
 }
