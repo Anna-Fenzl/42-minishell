@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 21:45:55 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/04 14:47:24 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc != 1)
 		return (0);
-	minishell();
+	testing();
+	// minishell();
 	return (0);
 }

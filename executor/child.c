@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:12:19 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 23:51:04 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/04 14:47:16 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	create_childs(t_child *child, int tmpout)
 	int		id;
 	int		cmd_num;
 	int		fd_pipe[2];
-	char	path;
+	// char	path;
 
 	i = 0;
 	cmd_num = ft_splitlen(child->cmd);
@@ -98,7 +98,7 @@ void	exec_in_child(t_child *child)
 	close(tmpout);
 }
 
-int	main(void)
+void	testing(void)
 {
 	t_child	child;
 	int		i;
@@ -114,5 +114,5 @@ int	main(void)
 	child.outfile = "outfile";
 	child.mode = trunc;
 	exec_in_child(&child);
-	return (0);
+	// return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 23:46:08 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/04 14:35:17 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_child
 	char		**cmd;
 	char		***flags;
 }	t_child;
+
+void	testing(void);
 
 int		builtin_pwd(void);
 char	*ft_get_path(char **env, char *cmd);

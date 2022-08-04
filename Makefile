@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/03 23:50:22 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/04 14:46:59 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 RM := rm -f
 
-SRC = main.c 
+SRC = main.c executor/child.c
 LIBS = ./libs/libs.a
 
 OBJ = $(SRC:.c=.o)
@@ -26,7 +26,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C ./libs
 	$(CC) $(CFLAGS) $(LIBS) $(OBJ) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline -o $(NAME)
-# -L/Users/$(USER)/goinfre/.brew/opt/readline/lib not found
 clean:
 	$(RM) $(OBJ) 
 
