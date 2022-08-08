@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:12:19 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/04 14:47:16 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/08 13:20:56 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	create_childs(t_child *child, int tmpout)
 		if (id == 0)
 		{
 			perror("hi from child");
-			// path = ft_get_path(NULL, child->cmd[i]);
-			// execve(path, child->flags[i], NULL);
-			// perror("could not execute\n");
+			path = ft_get_path(NULL, child->cmd[i]);
+			execve(path, child->flags[i], NULL);
+			perror("could not execute\n");
 		}
 		i++;
 	}
@@ -98,7 +98,7 @@ void	exec_in_child(t_child *child)
 	close(tmpout);
 }
 
-void	testing(void)
+int	main(void)
 {
 	t_child	child;
 	int		i;
@@ -114,5 +114,5 @@ void	testing(void)
 	child.outfile = "outfile";
 	child.mode = trunc;
 	exec_in_child(&child);
-	// return (0);
+	return (0);
 }
