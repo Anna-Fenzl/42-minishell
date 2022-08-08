@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/08 13:32:24 by afenzl           ###   ########.fr       */
+/*   Created: 2022/03/26 13:24:27 by afenzl            #+#    #+#             */
+/*   Updated: 2022/08/03 18:56:16 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <signal.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <dirent.h>
-# include <sys/ioctl.h>
-# include <string.h>
-# include "readline/readline.h"
-# include "readline/history.h"
-# include "libft/libs.h"
+/**
+ * @brief 
+ * 
+ * @param char *s 
+ * @param char c 
+ * @return char* where c was found; if not its NULL
+ */
 
-#endif
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	*p;
+
+	i = 0;
+	p = (char *)s;
+	while ((s[i] != (char)c) && s[i] != '\0')
+	{
+		i++;
+	}
+	if (s[i] == (char)c)
+	{
+		return (p += i);
+	}
+	else
+	{
+		return (NULL);
+	}
+}

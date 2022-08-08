@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/08 13:18:08 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/08 13:32:46 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <fcntl.h>
-# include "../libs/libs.h"
+# include "../libft/libs.h"
 
 // would like to use a enum for trunc and append
 // rn mode 0 for trunc and 1 for append

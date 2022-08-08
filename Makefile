@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/04 14:46:59 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/08 13:37:20 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,18 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM := rm -f
 
 SRC = main.c executor/child.c
-LIBS = ./libs/libs.a
+LIBS = ./libft/libs.a
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C ./libs
+	make -C ./libft
 	$(CC) $(CFLAGS) $(LIBS) $(OBJ) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline -o $(NAME)
+	
 clean:
+	make fclean -C ./libft
 	$(RM) $(OBJ) 
 
 fclean: clean
