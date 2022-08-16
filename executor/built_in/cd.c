@@ -6,13 +6,8 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:00 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 18:02:10 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/10 14:29:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execute.h"
-
-// int	builtin_cd(char *path)
-// {
-	
-// }
+#include "../include/minishell.h"

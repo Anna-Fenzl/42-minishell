@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:13 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 17:59:51 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 13:27:59 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execute.h"
+#include "../../include/minishell.h"
 
 /**
  * @brief writes the absolute pathname of the current working
@@ -20,15 +20,9 @@
 
 int	builtin_pwd(void)
 {
-	char	*path;
+	char	path[PATH_MAX];
 
-	path = getcwd(path, 0);
-	if (path == NULL)
-	{
-		free(path);
-		return (EXIT_FAILURE);
-	}
+	getcwd(path, PATH_MAX);
 	printf("%s\n", path);
-	free(path);
 	return (EXIT_SUCCESS);
 }

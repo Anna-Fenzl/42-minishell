@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:49:24 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 18:56:56 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 14:31:22 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ char	*ft_strdup(const char *s1)
 	len = ft_strlen(s1) + 1;
 	ptr = malloc(len * sizeof(char));
 	if (ptr == NULL)
-	{
 		return (NULL);
-	}
 	return ((char *)ft_memcpy(ptr, s1, len));
 }

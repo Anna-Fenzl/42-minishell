@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 12:02:32 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 23:44:27 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 13:47:51 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execute.h"
+#include "../include/minishell.h"
 
 static char	*join(char *s1, char *s2, char *new)
 {

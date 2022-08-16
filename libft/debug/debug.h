@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:06:14 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 18:11:30 by afenzl           ###   ########.fr       */
+/*   Created: 2022/08/08 14:46:25 by afenzl            #+#    #+#             */
+/*   Updated: 2022/08/08 14:47:48 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execute.h"
+#ifndef DEBUG_H
+# define DEBUG_H
 
-/**
- * @get the input and execute 
- * 
- * --> need to check if builtin or not
- * 		do buildins get executed in the parent
- * 		even if they are between pipes???
- */
+void	ft_print2(char **split);
+
+#endif	//DEBUG_H

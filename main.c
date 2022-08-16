@@ -6,14 +6,14 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/04 15:04:56 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 14:07:19 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "include/minishell.h"
 
 // to enter tabs into bash ctrl V t
-void	minishell(void)
+void	minishell(t_global *global)
 {
 	char	*buf;
 
@@ -26,18 +26,22 @@ void	minishell(void)
 			ft_printf("exit\n");
 			return ;
 		}
-		printf("%s\n", buf);
-		ft_printf("%i\n", ft_splitlen(ft_split(buf, ' ')));
+		tester(buf, global);
 		add_history(buf);
 		free(buf);
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **env)
 {
+	t_global	global;
+
 	(void)argv;
 	if (argc != 1)
 		return (0);
-	minishell();
+	// if env is unset set the right variables yourself
+	// copy that shit
+	global.env = env;
+	minishell(&global);
 	return (0);
 }

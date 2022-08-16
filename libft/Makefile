@@ -5,6 +5,7 @@ NAME = libs.a
 LIBFT := libft
 PRINTF := printf
 GNL := get_next_line
+DEBUG := debug
 
 FREE =	ft_free2.c		\
 
@@ -48,6 +49,7 @@ STR =	ft_strlen.c		\
 		ft_strtrim.c	\
 		ft_split.c		\
 		ft_splitlen.c	\
+		ft_splitdup.c	\
 		ft_itoa.c		\
 		ft_strmapi.c	\
 		ft_striteri.c	\
@@ -62,16 +64,21 @@ LIBFTCFILES :=	$(addprefix $(LIBFT)/free/, $(FREE))	\
 				$(addprefix $(LIBFT)/str/, $(STR))
 
 # PRINTF
-PRINTFCFILES = ft_printf.c ft_types.c ft_print_sciu.c ft_print_p.c ft_print_x.c
+PRINTFCFILES := ft_printf.c ft_types.c ft_print_sciu.c ft_print_p.c ft_print_x.c
 PRINTFCFILES := $(addprefix $(PRINTF)/, $(PRINTFCFILES))
 
 # GNL
 GNLCFILES := get_next_line.c get_next_line_utils.c
 GNLCFILES := $(addprefix $(GNL)/, $(GNLCFILES))
 
+# DEBUG
+DEBUGCFILES := ft_print2.c
+DEBUGCFILES := $(addprefix $(DEBUG)/, $(DEBUGCFILES))
+
 # LIBS
-CFILES := $(LIBFTCFILES) $(PRINTFCFILES) $(GNLCFILES)
+CFILES := $(LIBFTCFILES) $(PRINTFCFILES) $(GNLCFILES) $(DEBUGCFILES)
 OFILES := $(CFILES:.c=.o)
+
 
 all: $(NAME)
 

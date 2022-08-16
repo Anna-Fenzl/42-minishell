@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.h                                          :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/08 13:32:46 by afenzl           ###   ########.fr       */
+/*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
+/*   Updated: 2022/08/10 14:28:07 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTE_H
-# define EXECUTE_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
+# include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <stdlib.h>
-# include <errno.h>
 # include <fcntl.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <dirent.h>
+# include <sys/ioctl.h>
+# include <string.h>
+# include "readline/readline.h"
+# include "readline/history.h"
 # include "../libft/libs.h"
+# include "execute.h"
 
-// would like to use a enum for trunc and append
-// rn mode 0 for trunc and 1 for append
-
-enum e_mode {trunc, append};
-
-typedef struct s_child
+typedef struct s_global
 {
-	enum e_mode	mode;
-	int			fd[2];
-	char		*infile;
-	char		*outfile;
-	char		*cmd;
-	char		**flags;
-}	t_child;
+	char	**env;
+	t_child	child;
 
-void	testing(void);
+}				t_global;
 
-int		builtin_pwd(void);
-char	*ft_get_path(char **env, char *cmd);
-char	*ft_strjoin2(char *s1, char *s2);
+void	tester(char *cmd, t_global *global);
 
 #endif

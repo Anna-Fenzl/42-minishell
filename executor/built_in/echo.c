@@ -6,8 +6,16 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:03 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 17:19:22 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 13:52:23 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execute.h"
+#include "../include/minishell.h"
+
+int	builtin_echo(char *str, int flag)
+{
+	ft_printf("%s", str);
+	if (flag == 0)
+		printf("\n");
+	return (0);
+}
