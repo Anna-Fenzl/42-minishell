@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 16:34:16 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 19:19:53 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_child
 }	t_child;
 
 // builtins
+int		builtin_cd(char **env, char *path);
 int		builtin_pwd(void);
 int		builtin_env(char **env);
 int		builtin_export(char ***env, char *str);

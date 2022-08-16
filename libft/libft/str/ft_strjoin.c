@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:44:12 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 18:57:08 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 20:48:27 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static char	*join(const char *s1, const char *s2, char *new)
 	return (new);
 }
 
+// allocates!
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*new;
