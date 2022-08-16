@@ -6,12 +6,15 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 16:04:12 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 16:29:57 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+// spaces not handled the string must be trimmed
+// also export can be called with more than one argument
+// original export prints variables in alphabetical order -- env doesnt
 void	print_name(char *str)
 {
 	int	i;
@@ -84,7 +87,7 @@ int	check_existence(char **env, char *str)
 	return (-1);
 }
 
-void	change_value(char **env, int line, char *str)
+void	change_value(char **env, char *str, int line)
 {
 	if (ft_strchr(str, '=') != NULL)
 	{
@@ -115,13 +118,13 @@ void	set_new_var(char ***env, char *str)
 
 int	builtin_export(char ***env, char *str)
 {
-	int		i;
+	int		line;
 
-	i = check_existence(*env, str);
+	line = check_existence(*env, str);
 	if (str == NULL)
 		export_alone(env);
-	else if (i >= 0)
-		change_value(*env, i, str);
+	else if (line >= 0)
+		change_value(*env, str, line);
 	else
 		set_new_var(env, str);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:49:14 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 16:06:04 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/16 18:02:03 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ int	main(int argc, char **argv, char **env)
 	builtin_env(environ);
 	printf("\n\n");
 	builtin_export(&environ, "hello==90");
-	builtin_export(&environ, "hello=");
+	builtin_env(environ);
 	printf("\n\n");
-	builtin_export(&environ, NULL);
+	builtin_unset(&environ, "hello=");
+	builtin_env(environ);
+	printf("\n\n");
 	// builtin_env(environ);
-	// system("leaks a.out");
+	system("leaks a.out");
 	return (0);
 }
