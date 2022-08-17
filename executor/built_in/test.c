@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:49:14 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 21:08:54 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/17 16:40:56 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,40 @@ int	main(int argc, char **argv, char **env)
 	if (argc < 0)
 		printf("error\n");
 	environ = ft_splitdup(env);
-	// // builtin_pwd();
-	// builtin_env(environ);
-	// printf("\n\n");
-	// builtin_export(&environ, "hello==90");
-	// builtin_env(environ);
-	// printf("\n\n");
-	// builtin_unset(&environ, "hello=");
-	// builtin_env(environ);
+	printf("the current path is :\n");
 	builtin_pwd();
-	printf("\n\n");
-	builtin_cd(NULL, NULL);
-	builtin_pwd();
-	printf("\n\n");
+	builtin_unset(&environ, "OLDPWD");
+	builtin_export(&environ, "partyhot");
+	builtin_echo("HELLO THERE\n", 0);
+	printf("\n");
+	printf("-------------------------------------------------------\n");
 	builtin_env(environ);
-	// system("leaks a.out");
+	printf("-------------------------------------------------------\n");
+	builtin_cd(&environ, "..");
+	{
+		printf("the current path is :\n");
+		builtin_pwd();
+	}
+	printf("-------------------------------------------------------\n");
+	builtin_env(environ);
+	printf("-------------------------------------------------------\n");
+	builtin_unset(&environ, "PWD");
+	builtin_cd(&environ, "..");
+	{
+		printf("the current path is :");
+		builtin_pwd();
+	}
+	printf("-------------------------------------------------------\n");
+	builtin_env(environ);
+	printf("-------------------------------------------------------\n");
+	builtin_cd(&environ, "include");
+	{
+		printf("the current path is :\n");
+		builtin_pwd();
+	}
+	printf("-------------------------------------------------------\n");
+	builtin_env(environ);
+	printf("-------------------------------------------------------\n");
+	system("leaks a.out");
 	return (0);
 }

@@ -6,13 +6,10 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 18:05:10 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/17 16:55:45 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	builtin_exit()
-{
-	
-}
+// int	builtin_exit()
