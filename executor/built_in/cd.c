@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:00 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/17 16:56:06 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/17 17:18:01 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,29 @@
 // rn OLDPWD will apear after cd no matter what.
 // if pwd is not found OLDPWD is empty
 // 
-// 
 // shouldnt segfault in case 
 // -mkdir test
 // -cd test
 // -rm -rf ../test
 // -pwd
 // 
-// 
 
-void	add_old_pwd(char ***env, int line)
+void	set_old_pwd(char ***env, int line)
 {
 	char	*tmp;
+	int		old_pwd;
 
+	old_pwd = check_existence(*env, "OLDPWD");
+	if (old_pwd >= 0)
+	{
+		free((*env)[old_pwd]);
+		if (line < 0)
+		{
+			(*env)[old_pwd] = ft_strdup("OLDPWD=");
+			return ;
+		}
+		(*env)[old_pwd] = ft_strjoin("OLDPWD", &(*env)[line][3]);
+	}
 	if (line >= 0)
 	{
 		tmp = ft_strjoin("OLDPWD=", &(*env)[line][3]);
@@ -52,66 +62,35 @@ void	add_old_pwd(char ***env, int line)
 		builtin_export(env, "OLDPWD=");
 }
 
-void	set_old_pwd(char ***env, int line)
-{
-	int		i;
-
-	i = 0;
-	while (*env && (*env)[i] != NULL)
-	{
-		if (ft_strncmp("OLDPWD", (*env)[i], 6) == 0)
-		{
-			free((*env)[i]);
-			if (line < 0)
-			{
-				(*env)[i] = ft_strdup("OLDPWD=");
-				return ;
-			}
-			(*env)[i] = ft_strjoin("OLDPWD", &(*env)[line][3]);
-			return ;
-		}
-		i++;
-	}
-	add_old_pwd(env, line);
-}
-
 void	change_pwd(char ***env)
 {
-	int		i;
+	int		line;
 	char	pwd[PATH_MAX];
 
-	i = 0;
+	line = check_existence(*env, "PWD");
 	getcwd(pwd, PATH_MAX);
-	while (*env && (*env)[i] != NULL)
+	if (line >= 0)
 	{
-		if (ft_strncmp("PWD", (*env)[i], 3) == 0)
-		{
-			set_old_pwd(env, i);
-			free((*env)[i]);
-			(*env)[i] = ft_strjoin("PWD=", pwd);
-			return ;
-		}
-		i++;
+		set_old_pwd(env, line);
+		free((*env)[line]);
+		(*env)[line] = ft_strjoin("PWD=", pwd);
 	}
-	set_old_pwd(env, -1);
+	else
+		set_old_pwd(env, -1);
 }
 
 void	to_home_dir(char ***env)
 {
-	int	i;
+	int	line;
 
-	i = 0;
-	while (*env && (*env)[i] != NULL)
+	line = check_existence(*env, "HOME=");
+	if (line >= 0)
 	{
-		if (ft_strncmp("HOME=", (*env)[i], 5) == 0)
-		{
-			chdir(&(*env)[i][5]);
-			change_pwd(env);
-			return ;
-		}
-		i++;
+		chdir(&(*env)[line][5]);
+		change_pwd(env);
 	}
-	printf("minishell: cd: HOME not set\n");
+	else
+		printf("minishell: cd: HOME not set\n");
 }
 
 // dont need to handle macros

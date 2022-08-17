@@ -6,10 +6,70 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/17 16:55:45 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/17 18:07:59 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-// int	builtin_exit()
+static void	ft_error(char *str)
+{
+	printf("minishell: exit: %s numeric argument required\n", str);
+	exit (255);
+}
+
+static long	ft_numcpy(int i, long res, char *p)
+{
+	while (p[i] != '\0')
+	{
+		if (p[i] >= '0' && p[i] <= '9')
+		{
+			res = res * 10 + p[i] - '0';
+			i++;
+			if (i > 19 && res > LLONG_MAX)
+				ft_error(" ");
+		}
+		else
+			ft_error(" ");
+	}
+	return (res);
+}
+
+long long	atoll_check(char *str)
+{
+	int			i;
+	long long	res;
+	int			n;
+	char		*p;
+
+	i = 0;
+	res = 0;
+	n = 1;
+	p = (char *)str;
+	if (p[i] == '-' || p[i] == '+')
+	{
+		if (p[i + 1] == '\0')
+			ft_error(str);
+		if (p[i] == '-')
+			n = -1;
+		i++;
+	}
+	res = ft_numcpy(i, res, p);
+	if (res > LLONG_MAX)
+		ft_error(str);
+	return (res * n);
+}
+
+int	builtin_exit(char **arg)
+{
+	long	exitcode;
+
+	printf("exit\n");
+	if (ft_splitlen(arg) > 1)
+	{
+		printf("minishell: exit: too many arguments\n");
+		return (1);
+	}
+	exitcode = atoll_check(arg[0]);
+	exit(exitcode % 256);
+}

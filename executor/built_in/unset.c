@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:16 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 19:43:39 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/17 16:58:27 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	builtin_unset(char ***env, char *str)
 
 	if (ft_strchr(str, '=') != 0)
 	{
-		printf("minishell: unset: `%s\": not a valid identifier\n", str);
+		printf("minishell: unset: `%s\': not a valid identifier\n", str);
 		return (1);
 	}
 	line = check_existence(*env, str);
