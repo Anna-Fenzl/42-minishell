@@ -6,13 +6,17 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/17 16:55:33 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 14:09:45 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
 
 // man 7 environ --> info about env enviroment
+void	set_default_env(void)
+{
+	
+}
 
 // to enter tabs into bash ctrl V t
 void	minishell(t_global *global)
@@ -43,6 +47,8 @@ int	main(int argc, char **argv, char **env)
 	if (argc != 1)
 		return (0);
 	global.env = ft_splitdup(env);
+	if (global.env == NULL)
+		set_default_env();
 	minishell(&global);
 	return (0);
 }

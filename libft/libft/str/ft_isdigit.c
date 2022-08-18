@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 10:41:37 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/17 17:26:24 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/17 18:45:46 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param c 
  * @return int 1 if found, 0 if not
  */
-int	ft_isdigit(char c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 	{

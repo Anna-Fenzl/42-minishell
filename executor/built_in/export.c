@@ -6,13 +6,12 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/17 12:56:36 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 14:01:31 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-// spaces not handled the string must be trimmed
 // also export can be called with more than one argument
 // original export prints variables in alphabetical order -- env doesnt
 void	print_name(char *str)
@@ -119,7 +118,18 @@ void	set_new_var(char ***env, char *str)
 int	builtin_export(char ***env, char *str)
 {
 	int		line;
+	int		i;
 
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		if (ft_isalnum(str[i]) != 1 && str[i] != '_')
+		{
+			printf("minishell: export: `%s\': not a valid identifier\n", str);
+			return (1);
+		}
+		i++;
+	}
 	line = check_existence(*env, str);
 	if (str == NULL)
 		export_alone(env);
