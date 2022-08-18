@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:16 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 14:39:42 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:30:34 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	builtin_unset(char ***env, char *str)
 		if (ft_isalnum(str[i]) != 1 && str[i] != '_')
 		{
 			printf("minishell: unset: `%s\': not a valid identifier\n", str);
-			return (1);
+			return (EXIT_FAILURE);
 		}
 		i++;
 	}
@@ -57,5 +57,5 @@ int	builtin_unset(char ***env, char *str)
 	{
 		rem_old_var(env, line);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

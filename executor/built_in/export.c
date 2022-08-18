@@ -6,15 +6,17 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:05:03 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:29:54 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-// also export can be called with more than one argument
-// original export prints variables in alphabetical order -- env doesnt
-
+/*
+	also export can be called with more than one argument
+	-> invalid ones are not added, valid ones are - order doesnt matter
+	original export prints variables in alphabetical order -- env doesnt
+*/
 void	export_alone(char ***env)
 {
 	int	i;
@@ -67,10 +69,13 @@ int	builtin_export(char ***env, char *str)
 	if (str == NULL)
 		export_alone(env);
 	if (check_name(str) == 1)
+	{
 		printf("minshell: export: `%s': not a valid identifier\n", str);
+		return (EXIT_FAILURE);
+	}
 	else if (line >= 0)
 		change_value(*env, str, line);
 	else
 		set_new_var(env, str);
-	return (0);
+	return (EXIT_SUCCESS);
 }

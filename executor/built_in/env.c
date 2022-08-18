@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:05 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 18:04:31 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:29:12 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	builtin_env(char **env)
 			ft_printf("%s\n", env[i]);
 		i++;
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

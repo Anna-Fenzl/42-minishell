@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:13 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 14:03:16 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:30:15 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	builtin_pwd(void)
 	if (getcwd(path, PATH_MAX))
 	{
 		printf("%s\n", path);
-		return (0);
+		return (EXIT_SUCCESS);
 	}
-	return (1);
+	return (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:14:58 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:21:38 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void)argv;
 	if (argc != 1)
-		return (0);
+		return (1);
 	global.env = ft_splitdup(env);
 	set_default_env(&global);
 	minishell(&global);

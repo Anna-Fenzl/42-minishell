@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:23:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 19:57:33 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:20:54 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ char	*skip_until_value(char *str)
 	return (&str[i]);
 }
 
-// if SHLVL not found or not a number its set to 1 on default
-// if SHLVL is valid it gets incremented by one
+/*
+	if SHLVL not found or not a number its set to 1 on default
+	if SHLVL is valid it gets incremented by one
+*/
 void	handle_shlvl(char **env)
 {
 	int		line;
