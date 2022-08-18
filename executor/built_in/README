@@ -1,8 +1,0 @@
-
---> all those cmd still execute with UPPERCASE letters
-env, echo, pwd, 
-
---> all those dont
-cd, export, unset, exit
-
-the builtin cmds will be executed in a subshell if there is more than one cmd 

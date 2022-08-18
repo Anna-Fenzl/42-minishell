@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 14:06:55 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:13:00 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ long long	atoll_check(char *str)
 	return (res * n);
 }
 
+/*
+	need to free before exiting!!!
+*/
 int	builtin_exit(char **arg)
 {
 	long	exitcode;

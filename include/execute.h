@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/17 17:39:29 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:09:36 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int		builtin_exit(char **arg);
 
 // utils
 int		check_existence(char **env, char *str);
-char	*ft_get_path(char **env, char *cmd);
-char	*ft_strjoin2(char *s1, char *s2);
+int		check_name(char *str);
+void	print_name(char *str);
+void	print_value(char *str);
 
 #endif
