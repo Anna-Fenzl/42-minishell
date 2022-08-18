@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/16 18:07:35 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/18 14:38:33 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,13 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 RM := rm -f
 
-SRC = main.c
-EXEC = 
+SRC = 	main.c \
+		./executor/built_in/cd.c ./executor/built_in/echo.c ./executor/built_in/env.c \
+		./executor/built_in/exit.c ./executor/built_in/export.c ./executor/built_in/pwd.c \
+		./executor/built_in/unset.c
 LIBS = ./libft/libs.a
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o) 
 
 all: $(NAME)
 

@@ -6,13 +6,13 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:16 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 13:58:48 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 14:39:42 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	rem_old_var(char ***env, char *str, int line)
+void	rem_old_var(char ***env, int line)
 {
 	int		i;
 	int		j;
@@ -55,7 +55,7 @@ int	builtin_unset(char ***env, char *str)
 	line = check_existence(*env, str);
 	if (line >= 0)
 	{
-		rem_old_var(env, str, line);
+		rem_old_var(env, line);
 	}
 	return (0);
 }

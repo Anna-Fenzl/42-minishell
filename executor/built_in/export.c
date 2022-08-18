@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 14:01:31 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 17:39:43 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,24 +115,34 @@ void	set_new_var(char ***env, char *str)
 	*env = tmp;
 }
 
+/*
+	checks until '=' if the name is valid (alnum && '_')
+*/
+int	check_name(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0' && str[i] != '=')
+	{
+		if (ft_isalnum(str[i]) != 1 && str[i] != '_')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	builtin_export(char ***env, char *str)
 {
 	int		line;
 	int		i;
 
 	i = 0;
-	while (str && str[i] != '\0')
-	{
-		if (ft_isalnum(str[i]) != 1 && str[i] != '_')
-		{
-			printf("minishell: export: `%s\': not a valid identifier\n", str);
-			return (1);
-		}
-		i++;
-	}
 	line = check_existence(*env, str);
 	if (str == NULL)
 		export_alone(env);
+	if (check_name(str) == 1)
+		printf("minshell: export: `%s': not a valid identifier\n", str);
 	else if (line >= 0)
 		change_value(*env, str, line);
 	else
