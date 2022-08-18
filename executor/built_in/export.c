@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:29:54 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:44:26 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	builtin_export(char ***env, char *str)
 	line = check_existence(*env, str);
 	if (str == NULL)
 		export_alone(env);
-	if (check_name(str) == 1)
+	else if (check_name(str) == 1)
 	{
 		printf("minshell: export: `%s': not a valid identifier\n", str);
 		return (EXIT_FAILURE);

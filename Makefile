@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/18 20:09:57 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/18 20:43:00 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./libft
-	$(CC) $(CFLAGS) $(LIBS) $(OBJ) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline -o $(NAME)
+	$(CC) $(CFLAGS) $(LIBS) $(OBJ) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline -fsanitize=address -g -o $(NAME)
 	
 clean:
 	make fclean -C ./libft

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 20:01:46 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:09:15 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:41:26 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	check_name(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (0);
 	while (str[i] != '\0' && str[i] != '=')
 	{
 		if (ft_isalnum(str[i]) != 1 && str[i] != '_')

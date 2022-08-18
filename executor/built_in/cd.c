@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:00 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:28:12 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/18 20:35:15 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	change_pwd(char ***env)
 		set_old_pwd(env, -1);
 }
 
-void	to_home_dir(char ***env)
+int	to_home_dir(char ***env)
 {
 	int	line;
 
@@ -92,15 +92,19 @@ void	to_home_dir(char ***env)
 	else
 	{
 		printf("minishell: cd: HOME not set\n");
-		return (EXIT_FAILURE);
+		return (1);
 	}
+	return (0);
 }
 
 // dont need to handle macros
 int	builtin_cd(char ***env, char *path)
 {
 	if (path == NULL)
-		to_home_dir(env);
+	{
+		if (to_home_dir(env) == 1)
+			return (EXIT_FAILURE);
+	}
 	else
 	{
 		if (chdir(path) < 0)
