@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:44:53 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/19 14:55:58 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	minishell(t_global *global)
 	while (1)
 	{
 		builtin_env(global->env);
-		buf = readline ("minishell.6.9> ");
+		buf = readline ("minishell> ");
 		if (ft_strcmp(buf, "exit") == 0)
 		{
 			free(buf);
@@ -39,8 +39,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	if (argc != 1)
 		return (1);
-	global.env = ft_splitdup(env);
-	set_default_env(&global);
+	set_default_env(&global, env);
 	minishell(&global);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 19:58:36 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/19 14:55:24 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ typedef struct s_global
 
 }				t_global;
 
-void	set_default_env(t_global *global);
+void	set_default_env(t_global *global, char **env);
 
 #endif
