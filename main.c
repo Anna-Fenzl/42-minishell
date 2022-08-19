@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/19 14:55:58 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/19 17:08:06 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	minishell(t_global *global)
 	{
 		builtin_env(global->env);
 		buf = readline ("minishell> ");
+		if (buf == NULL)
+			exit(0);
 		if (ft_strcmp(buf, "exit") == 0)
 		{
 			free(buf);

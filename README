@@ -6,17 +6,28 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:47:30 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/19 17:04:56 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 TO DO:
 
+-->handle signals 
+in ineractive mode
+ctrl C = display a new prompt ---> SIGTERM - termination of a programm
+ctrl D = exits the SHELL ---> SIGINT - 
 
 
+the libft has some extra functions for two dimensional arrays:
+-> ft_free2: it frees a split
+-> ft_print2: it prints the split -debug
+-> ft_splitdup: ft_strdups the whole split
+-> ft_splitlen: returns the length of the split
 
-
+and for env 
+-> check_existence will check a split and search for a name until '\0' or '='
+	to work with env
 
 
 
