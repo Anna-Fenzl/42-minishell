@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/19 13:08:14 by annaiarinov      ###   ########.fr       */
+/*   Updated: 2022/08/19 19:15:19 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	replace_var_env(t_list *lexer)
 	char	**split_q;
 
 	current = lexer->next;
-	while(current)
+	while (current)
 	{
 		this = current->content;
 		split_q = split_cmd_table(this->str);
@@ -102,8 +102,6 @@ void	replace_var_env(t_list *lexer)
 		current = current->next;
 	}
 }
-
-
 
 /***************
  * NAME: parse_lexer
@@ -120,7 +118,6 @@ void	parse_lexer(t_list *lexer)
 	is_fd(lexer);
 	is_cmd(lexer);
 }
-
 
 /***************
  * NAME:which_pipe
@@ -148,24 +145,23 @@ void	which_pipe(t_list *lexer)
 	}
 }
 
-
-int parse(char *buf, t_list *lexer)
+int	parse(char *buf, t_list *lexer)
 {
 	t_list	*tmp;
 
 	tmp = ft_listnew(NULL);
-	if(!fill_lexer(buf, &tmp))
+	if (!fill_lexer(buf, &tmp))
 	{
 		err("Quotes are not closed");
 		free_lexer(tmp);
-		return(0);
+		return (0);
 	}
 	get_new_lexer(tmp);
 	change_lexer(tmp, &lexer);
 	free_lexer(tmp);
 	if (lexer->next)
 	{
-		if(!check_tokens(lexer))
+		if (!check_tokens(lexer))
 		{
 			parse_lexer(lexer);
 			if (!check_error(lexer) || syntax_error(lexer))
@@ -177,4 +173,3 @@ int parse(char *buf, t_list *lexer)
 	}
 	return (0);
 }
-

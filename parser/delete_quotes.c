@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 14:27:54 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 14:30:08 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:53:57 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
  ****************/
 int	skip_symbols(char *s, int i, int c)
 {
-	int j;
+	int	j;
 
 	j = i + 1;
-	while(s[j] != c && s[j])
+	while (s[j] != c && s[j])
 		j++;
-	if(s[j])
+	if (s[j])
 		j++;
-	return(j);
+	return (j);
 }
 
 /***************
@@ -47,11 +47,11 @@ int	count_words(char *s)
 
 	i = 0;
 	words = 0;
-	while(s[i])
+	while (s[i])
 	{
-		if(s[i] != '"' && s[i] != '\'')
+		if (s[i] != '"' && s[i] != '\'')
 		{
-			while(s[i] && s[i] != '\'' && s[i] != '"')
+			while (s[i] && s[i] != '\'' && s[i] != '"')
 				i++;
 			words++;
 		}
@@ -60,13 +60,13 @@ int	count_words(char *s)
 			i = skip_symbols(s, i, '"');
 			words++;
 		}
-		else if(s[i] == '\'')
+		else if (s[i] == '\'')
 		{
 			i = skip_symbols(s, i, '\'');
 			words++;
 		}
 	}
-	return(words);
+	return (words);
 }
 
 void	init_position(t_vec *cpt)
@@ -81,7 +81,6 @@ void	delete_quotes(char *s, t_vec *cpt, int c)
 	cpt->prev_pos = cpt->cur_pos;
 	cpt->cur_pos = skip_symbols(s, cpt->cur_pos, c);
 }
-
 
 /***************
  * NAME: not_in_quotes
@@ -98,7 +97,6 @@ void	not_in_quotes(char *s, t_vec *cpt)
 		cpt->cur_pos++;
 }
 
-
 /***************
  * NAME: split_cmd_table
  * INPUT:
@@ -109,9 +107,9 @@ void	not_in_quotes(char *s, t_vec *cpt)
  ****************/
 char	split_cmd_table(char *s)
 {
-	t_vec cpt;
-
+	t_vec	cpt;
 	char	**str;
+
 	str = malloc(sizeof(char *) * (count_words(s) + 1));
 	init_position(&cpt);
 	while (s[cpt.cur_pos])

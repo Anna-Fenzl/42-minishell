@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:40:08 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 13:40:44 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:54:41 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minishell.h"
 
@@ -41,8 +40,6 @@ void	add_lexer(t_list **lexer, char *input, int len, t_tokens type)
 	ft_lstadd_back(lexer, new_list);
 }
 
-
-
 /***************
  * NAME: fill_lexer
  * INPUT: input -> buf from terminal input, lexer -> t_list struct
@@ -53,11 +50,11 @@ void	add_lexer(t_list **lexer, char *input, int len, t_tokens type)
  ****************/
 int	fill_lexer(char *input, t_list **lexer)
 {
-	char *last;
+	char	*last;
 	t_elem	this;
 
 	last = input;
-	while(*input)
+	while (*input)
 	{
 		this = which_token(input);
 		if ((this.str || *input == '"' || *input == '\'') && last != input) // in case it in the begin of cmd line its bug that we shuld ignore and dont in lex,
@@ -129,7 +126,7 @@ void	add_to_new_lex(t_list **lexer, t_elem *this)
 	t_elem	*new_elem;
 
 	new_elem = malloc(sizeof(t_elem));
-	if(!new_elem)
+	if (!new_elem)
 		return ;
 	new_elem->str = ft_strdup(this->str);
 	new_elem->len = this->len;

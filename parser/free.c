@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:40:55 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 13:41:14 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:54:20 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	free_str(t_list *lexer)
 	t_elem	*this;
 
 	current = lexer->next;
-	while(current)
+	while (current)
 	{
 		this = current->next;
 		free(this->str);
@@ -31,4 +31,3 @@ void	free_lexer(t_list *lexer)
 	free_str(lexer);
 	ft_lstclear(&lexer, free);
 }
-

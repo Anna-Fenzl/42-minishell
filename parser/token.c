@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:39:16 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 13:39:55 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:15:54 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_elem	*existing_token(void)
 	{"\t", 1, 0, T_SPACE, 0},
 	{NULL, 1, 0, 0, 0}//end of array
 	};
+
 	return (tokens);
 }
 

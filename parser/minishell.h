@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 14:13:48 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:55:14 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ t_elem	which_token(char *input);
 
 void	add_lexer(t_list **lexer, char *input, int len, t_tokens type);
 
-int	fill_lexer(char *input, t_list **lexer);
+int		fill_lexer(char *input, t_list **lexer);
 
-int parse(char *buf, t_list *lexer);
+int		parse(char *buf, t_list *lexer);
 void	apply_option(t_elem *this, int i, t_list *cursor);
 void	is_option(t_list *lexer);
 

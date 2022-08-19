@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:37:59 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 13:46:47 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:15:44 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minishell.h"
-
-
 
 /***************
  * NAME: which_quotes
@@ -29,17 +26,16 @@ void	which_quotes(t_list *lexer)
 	t_elem	*this;
 
 	current = lexer->next;
-	while(current)
+	while (current)
 	{
 		this = current->content;
-		if(this->str[0] == '\'')
+		if (this->str[0] == '\'')
 			this->quotes = 2;
-		else if(this->str[0] == '"')
+		else if (this->str[0] == '"')
 			this->quotes = 1;
 		current = current->next;
 	}
 }
-
 
 /***************
  * NAME: lexing_squote
@@ -49,7 +45,6 @@ void	which_quotes(t_list *lexer)
  *
  *
  ****************/
-
 int	lexing_squote(char **input)
 {
 	char	*str;
@@ -66,7 +61,6 @@ int	lexing_squote(char **input)
 	*input = str;
 	return (1);
 }
-
 
 int	lexing_dquote(char **input)
 {

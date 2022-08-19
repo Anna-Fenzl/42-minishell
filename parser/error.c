@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:31:15 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 13:39:01 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:54:15 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	has_error(t_elem *this, t_elem *next)
 	return (1);
 }
 
-
 int	check_error(t_list *lexer)
 {
 	t_list		*current;
@@ -76,7 +75,6 @@ int	check_error(t_list *lexer)
 	}
 	return (1);
 }
-
 
 /***************
  * NAME: syntax_error

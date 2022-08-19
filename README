@@ -6,18 +6,9 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/19 17:04:56 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/19 18:48:36 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-TO DO:
-
--->handle signals 
-in ineractive mode
-ctrl C = display a new prompt ---> SIGTERM - termination of a programm
-ctrl D = exits the SHELL ---> SIGINT - 
-
 
 the libft has some extra functions for two dimensional arrays:
 -> ft_free2: it frees a split
@@ -28,6 +19,17 @@ the libft has some extra functions for two dimensional arrays:
 and for env 
 -> check_existence will check a split and search for a name until '\0' or '='
 	to work with env
+
+TO DO:
+
+-->handle signals 
+in ineractive mode
+--- before exetcuting a program --> start of while 1 loop
+use signal function, it takes another function 'void' and the function just takes an int as parameter
+
+--- in child processes set signals back to default
+use SIG_DFL
+
 
 
 
