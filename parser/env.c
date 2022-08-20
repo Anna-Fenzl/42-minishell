@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:47:18 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/19 18:54:07 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/20 17:44:10 by annaiarinov      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	in_env(char **split, int i, int len)
 	char	**tmp;
 
 	j = 0;
-	while (g_ms.cpenv[j])
+	while (g_global.env[j])
 	{
-		tmp = ft_split(g_ms.cpenv[j], '=');//HOME = /home/sar
+		tmp = ft_split(g_global.env[j], '=');//HOME = /home/sar
 		if (!ft_strncmp(split[i] + 1, tmp[0]//+`1 because our path begins with /
 				, ft_strlen(tmp[0])))
 		{
 			free(split[i]);
-			split[i] = ft_strdup(g_ms.cpenv[j] + len);//if HOME == HOME we clean our split and put env inside
+			split[i] = ft_strdup(g_global.env[j] + len);//if HOME == HOME we clean our split and put env inside
 		}
 		free_split(tmp);
 		j++;
@@ -41,7 +41,7 @@ void	not_in_env(char **split, int i, int len)
 		if (split[i][1] == '?' && len == 2)// true or false
 		{
 			free(split[i]);
-			res = ft_itoa(g_ms.ret);
+			res = ft_itoa(g_global.error_code);
 			split[i] = ft_strdup(res);
 			free(res);
 		}

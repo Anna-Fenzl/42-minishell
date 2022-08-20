@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/19 14:55:24 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/20 17:48:20 by annaiarinov      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,14 @@ typedef struct s_global
 {
 	char	**env;
 	t_child	child;
+	int		error_code;
+	char	*buf;
 
 }				t_global;
 
+
 void	set_default_env(t_global *global, char **env);
+
+static t_global g_global;
 
 #endif

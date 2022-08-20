@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   option.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:30:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 13:31:32 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:17:42 by annaiarinov      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
  *
  *
  ****************/
-void	apply_option(t_elem *this, int i, t_list *cursor)
+void apply_option(t_elem *this, int i, t_list *prev_node)
 {
-	t_elem	*prev;
+	t_elem *prev;
 
 	if (!this->str[i] && i > 1)
 	{
-		prev = cursor->previous->content;
+		prev = prev_node->content;
 		if (prev->type == T_CMD || prev->type == T_OPT)
 			this->type = T_OPT;
 	}
@@ -40,12 +40,15 @@ void	apply_option(t_elem *this, int i, t_list *cursor)
  *
  *
  ****************/
-void	is_option(t_list *lexer)
+void is_option(t_list *lexer)
 {
-	t_list	*cursor;
-	t_elem	*this;
-	int		i;
+	t_list *cursor;
+	t_list *prev;
 
+	t_elem *this;
+	int i;
+
+	prev = lexer;
 	cursor = lexer->next;
 	while (cursor)
 	{
@@ -57,11 +60,12 @@ void	is_option(t_list *lexer)
 			while (this->str[i])
 			{
 				if (this->str[i] != 'n')
-					break ;
+					break;
 				i++;
 			}
-			apply_option(this, i, cursor);
+			apply_option(this, i, prev);
 		}
+		prev = cursor;
 		cursor = cursor->next;
 	}
 }

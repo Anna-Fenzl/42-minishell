@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/19 17:08:06 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/20 17:50:05 by annaiarinov      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,35 @@
 // to enter tabs into bash ctrl V t
 void	minishell(t_global *global)
 {
-	char	*buf;
-
 	while (1)
 	{
 		builtin_env(global->env);
-		buf = readline ("minishell> ");
-		if (buf == NULL)
+		g_global.buf = readline ("minishell> ");
+		if (g_global.buf == NULL)
 			exit(0);
-		if (ft_strcmp(buf, "exit") == 0)
+		if (ft_strcmp(g_global.buf, "exit") == 0)
 		{
-			free(buf);
+			free(g_global.buf);
 			ft_printf("exit\n");
 			return ;
 		}
-		add_history(buf);
-		free(buf);
+		add_history(g_global.buf);
+		free(g_global.buf);
 	}
 }
 
 int	main(int argc, char **argv, char **env)
 {
-	t_global	global;
+	t_list	*lexer;
 
+	g_global.error_code = 0
 	(void)argv;
 	if (argc != 1)
 		return (1);
-	set_default_env(&global, env);
-	minishell(&global);
+	set_default_env(&g_global, env); // in case we using global var there no need to pass it like option just call it in the function
+	lexer = ft_lstnew(NULL);
+	minishell(&g_global);
+	if (!parser(g_global.buf, lexer))
+		g_global.error_code = 127;
 	return (0);
 }
