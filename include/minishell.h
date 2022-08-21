@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/20 17:48:20 by annaiarinov      ###   ########.fr       */
+/*   Updated: 2022/08/21 10:37:36 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "readline/history.h"
 # include "../libft/libs.h"
 # include "execute.h"
+# include "../parser/minishell.h"
 
 typedef struct s_global
 {
