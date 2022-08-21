@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 17:43:21 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 18:54:36 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_global	g_global;
 
-void	ft_lst_print(t_list *lexer)
+void	print_lexer(t_list *lexer)
 {
 	while (lexer != NULL)
 	{
@@ -31,31 +31,26 @@ void	ft_lst_print(t_list *lexer)
 }
 
 // add history should not add '\n'
-void	minishell()
+//spaces inside of quotes are not preserved !
+// also bash has some weird behavior with $ and quotes or $"$"
+void	minishell(void)
 {
 	t_list	*lexer;
 
+	// builtin_env(g_global.env);
 	while (1)
 	{
 		lexer = ft_lstnew(NULL);
-		// builtin_env(g_global.env);
 		g_global.buf = readline("minishell> ");
 		if (g_global.buf == NULL)
 			exit(0);
-		add_history(g_global.buf);
+		if (ft_strcmp(g_global.buf, "\0") != 0)
+			add_history(g_global.buf);
 		if (!parse(g_global.buf, &lexer))
 			g_global.error_code = 127;
-		ft_lst_print(lexer);
-		if (ft_strcmp(g_global.buf, "exit") == 0)
-		{
-			free(g_global.buf);
-			ft_printf("exit\n");
-			return ;
-		}
+		print_lexer(lexer);
 		free(g_global.buf);
 		free_lexer(lexer);
-		system("leaks minishell");
-		break ;
 	}
 }
 
@@ -65,7 +60,7 @@ int	main(int argc, char **argv, char **env)
 	g_global.error_code = 0;
 	if (argc != 1)
 		return (1);
-	set_default_env(&g_global, env); // in case we using global var there no need to pass it like option just call it in the function
+	set_default_env(env);
 	minishell();
 	return (0);
 }

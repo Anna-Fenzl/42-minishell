@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:23:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 13:46:30 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 18:07:42 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,22 @@ void	handle_shlvl(char **env)
 /*
 	sets PWD, SHLVL and _=(aka last executed pogramm) to default
 */
-void	set_default_env(t_global *global, char **env) // dont pass it
+void	set_default_env(char **env)
 {
 	char	pwd[PATH_MAX];
 	char	*tmp;
 
-	global->env = ft_splitdup(env);
-	builtin_unset(&global->env, "PWD");
+	g_global.env = ft_splitdup(env);
+	builtin_unset(&g_global.env, "PWD");
 	if (getcwd(pwd, PATH_MAX))
 	{
 		tmp = ft_strjoin("PWD=", pwd);
-		builtin_export(&global->env, tmp);
+		builtin_export(&g_global.env, tmp);
 		free(tmp);
 	}
-	if (check_existence(global->env, "SHLVL=") < 0)
-		builtin_export(&global->env, "SHLVL=1");
+	if (check_existence(g_global.env, "SHLVL=") < 0)
+		builtin_export(&g_global.env, "SHLVL=1");
 	else
-		handle_shlvl(global->env);
-	builtin_export(&global->env, "_=/usr/bin/env");
+		handle_shlvl(g_global.env);
+	builtin_export(&g_global.env, "_=/usr/bin/env");
 }

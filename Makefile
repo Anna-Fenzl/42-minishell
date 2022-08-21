@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/21 17:44:14 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/21 18:52:31 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJEXEC) $(OBJPARSE)
 	make -C ./libft
-	$(CC) $(CFLAGS) $(LIBS) $(OBJEXEC) $(OBJPARSE) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline  -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJEXEC) $(OBJPARSE) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -L./libft -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline -ls  -o $(NAME)
 
 clean:
 	make fclean -C ./libft
