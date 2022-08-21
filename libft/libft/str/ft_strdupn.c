@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdupn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 12:31:58 by annaiarinov       #+#    #+#             */
-/*   Updated: 2022/08/21 13:44:46 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 14:35:17 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_strdupn(char *s, int n)
 {

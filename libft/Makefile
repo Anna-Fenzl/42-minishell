@@ -17,7 +17,7 @@ LST =	ft_lstnew.c			\
 		ft_lstclear.c		\
 		ft_lstdelone.c		\
 		ft_lstiter.c		\
-		ft_lstmap.c			
+		ft_lstmap.c
 
 MEM =	ft_memset.c		\
 		ft_bzero.c		\
@@ -25,7 +25,7 @@ MEM =	ft_memset.c		\
 		ft_memmove.c 	\
 		ft_memchr.c		\
 		ft_memcmp.c		\
-		ft_calloc.c		
+		ft_calloc.c
 
 STR =	ft_strlen.c		\
 		ft_isalpha.c 	\
@@ -44,6 +44,7 @@ STR =	ft_strlen.c		\
 		ft_strnstr.c	\
 		ft_atoi.c		\
 		ft_strdup.c		\
+		ft_strdupn.c	\
 		ft_substr.c		\
 		ft_strjoin.c 	\
 		ft_strtrim.c	\
@@ -56,7 +57,7 @@ STR =	ft_strlen.c		\
 		ft_putchar_fd.c	\
 		ft_putstr_fd.c	\
 		ft_putendl_fd.c	\
-		ft_putnbr_fd.c	
+		ft_putnbr_fd.c
 
 LIBFTCFILES :=	$(addprefix $(LIBFT)/free/, $(FREE))	\
 				$(addprefix $(LIBFT)/mem/, $(MEM))		\
@@ -85,7 +86,7 @@ all: $(NAME)
 $(NAME): $(OFILES)
 	$(AR) $(NAME) $(OFILES)
 
-clean: 
+clean:
 	rm -f $(OFILES)
 
 fclean: clean

@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 10:37:04 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 14:50:13 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <signal.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <dirent.h>
-# include <sys/ioctl.h>
-# include <string.h>
-# include "readline/readline.h"
-# include "readline/history.h"
-# include "../libft/libs.h"
-# include "../include/minishell.h"
+// # include "../libft/libs.h"
 
 typedef enum s_tokens
 {
@@ -75,6 +61,14 @@ typedef struct s_vec
 	int	line_nmb;
 }				t_vec;
 
+
+
+int		lexing_squote(char **input);
+int		lexing_dquote(char **input);
+int		lexing_quotes(char **input);
+void	which_quotes(t_list *lexer);
+
+
 int		check_tokens1(t_elem *this);
 int		check_tokens2(t_elem *this);
 int		check_tokens(t_list *lexer);
@@ -87,7 +81,7 @@ int		count_words(char *s);
 void	init_position(t_vec *cpt);
 void	delete_quotes(char *s, t_vec *cpt, int c);
 void	not_in_quotes(char *s, t_vec *cpt);
-char	split_cmd_table(char *s);
+char	**split_cmd_table(char *s);
 
 void	in_env(char **split, int i, int len);
 void	not_in_env(char **split, int i, int len);
@@ -117,10 +111,7 @@ void	parse_lexer(t_list *lexer);
 void	which_pipe(t_list *lexer);
 int		parse(char *buf, t_list *lexer);
 
-void	which_quotes(t_list *lexer);
-int		lexing_squote(char **input);
-int		lexing_dquote(char **input);
-int		lexing_quotes(char **input);
+
 
 t_elem	which_token(char *input);
 

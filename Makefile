@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
+#    By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/21 14:04:44 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/21 14:39:48 by aiarinov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ SRCEXEC =	main.c env.c \
 
 SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c ./parser/delete_quotes.c \
 		./parser/env.c ./parser/free.c ./parser/lexer.c ./parser/option.c ./parser/parser.c \
-		./parser/quotes.c ./parser/tokens.c
-		
+		./parser/quotes.c ./parser/token.c ./parser/error.c
+
 LIBS = ./libft/libs.a
 
 OBJEXEC = $(SRCEXEC:.c=.o)

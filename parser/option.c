@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   option.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:30:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/20 17:17:42 by annaiarinov      ###   ########.fr       */
+/*   Updated: 2022/08/21 14:16:38 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 /***************
  * NAME: apply_option

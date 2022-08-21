@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:47:18 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/20 17:44:10 by annaiarinov      ###   ########.fr       */
+/*   Updated: 2022/08/21 14:28:51 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 void	in_env(char **split, int i, int len)
 {
@@ -27,7 +27,7 @@ void	in_env(char **split, int i, int len)
 			free(split[i]);
 			split[i] = ft_strdup(g_global.env[j] + len);//if HOME == HOME we clean our split and put env inside
 		}
-		free_split(tmp);
+		ft_free2(tmp);
 		j++;
 	}
 }
@@ -68,7 +68,7 @@ char	**replace_var(char *s)
 	int		len;
 
 	i = 0;
-	split = ft_new_split(s);
+	split = ft_split(s, '\0');//ft_new_split
 	while (split[i])
 	{
 		len = ft_strlen(split[i]);

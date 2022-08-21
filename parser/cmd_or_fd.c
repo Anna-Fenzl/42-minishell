@@ -6,11 +6,11 @@
 /*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 14:24:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/18 14:25:05 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 14:16:17 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 void	is_fd(t_list *lexer)
 {

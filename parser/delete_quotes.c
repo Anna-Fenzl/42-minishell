@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   delete_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 14:27:54 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/19 18:53:57 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 14:25:30 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 /***************
  * NAME: skip_symbols
@@ -105,7 +105,7 @@ void	not_in_quotes(char *s, t_vec *cpt)
  *
  *
  ****************/
-char	split_cmd_table(char *s)
+char	**split_cmd_table(char *s)
 {
 	t_vec	cpt;
 	char	**str;

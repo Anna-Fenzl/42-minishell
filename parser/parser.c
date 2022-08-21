@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/19 19:15:19 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 14:33:26 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 /***************
  * NAME: rejoin_the_split
@@ -63,7 +63,7 @@ void	replace_var_in_q(char **split_q)
 			tmp = rejoin_the_split(split_env);
 			split_q[i] = ft_strtrim(tmp, "\"");
 			free(tmp);
-			free_split(split_env);
+			ft_free2(split_env);
 		}
 		else//delete single qoutes
 		{
@@ -98,7 +98,7 @@ void	replace_var_env(t_list *lexer)
 		replace_var_in_q(split_q);
 		free(this->str);
 		this->str = rejoin_the_split(split_q);
-		free_split(split_q);
+		ft_free2(split_q);
 		current = current->next;
 	}
 }
@@ -149,7 +149,7 @@ int	parse(char *buf, t_list *lexer)
 {
 	t_list	*tmp;
 
-	tmp = ft_listnew(NULL);
+	tmp = ft_lstnew(NULL);
 	if (!fill_lexer(buf, &tmp))
 	{
 		err("Quotes are not closed");

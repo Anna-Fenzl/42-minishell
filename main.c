@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 13:41:19 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 14:15:46 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv, char **env)
 	set_default_env(&g_global, env); // in case we using global var there no need to pass it like option just call it in the function
 	lexer = ft_lstnew(NULL);
 	minishell(&g_global);
-	if (!parser(g_global.buf, lexer))
+	if (!parse(g_global.buf, lexer))
 		g_global.error_code = 127;
 	return (0);
 }
