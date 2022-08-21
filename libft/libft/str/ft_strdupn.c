@@ -5,46 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 16:33:09 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/19 16:37:02 by afenzl           ###   ########.fr       */
+/*   Created: 2022/08/20 12:31:58 by annaiarinov       #+#    #+#             */
+/*   Updated: 2022/08/21 13:44:46 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-static char	*ft_strnew(size_t size)
+char	*ft_strdupn(char *s, int n)
 {
 	char	*str;
+	int		i;
 
-	str = (char *)malloc(size + 1);
-	if (str != NULL)
+	str = malloc(sizeof(char) * (n + 1));
+	if (str == NULL || s == NULL)
+		return (NULL);
+	i = 0;
+	while (i < n && s[i] != '\0')
 	{
-		ft_bzero(str, (size + 1));
-		return (str);
+		str[i] = s[i];
+		i++;
 	}
-	else
-		return (NULL);
-}
-
-char	*ft_strdupn(const char *str, size_t n)
-{
-	char	*result;
-	char	*temp;
-
-	if (str == NULL)
-		return (NULL);
-	result = ft_strnew(n + 1);
-	temp = result;
-	if (result != NULL)
-	{
-		while (*str && n > 0)
-		{
-			*temp++ = *str++;
-			n--;
-		}
-		*temp = '\0';
-		return (result);
-	}
-	else
-		return (NULL);
+	str[i] = '\0';
+	return (str);
 }

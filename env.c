@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:23:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/20 17:40:02 by annaiarinov      ###   ########.fr       */
+/*   Updated: 2022/08/21 13:46:30 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,12 @@ void	handle_shlvl(char **env)
 
 /*
 	sets PWD, SHLVL and _=(aka last executed pogramm) to default
-	_= not implemented yet
 */
 void	set_default_env(t_global *global, char **env) // dont pass it
 {
 	char	pwd[PATH_MAX];
 	char	*tmp;
-	
+
 	global->env = ft_splitdup(env);
 	builtin_unset(&global->env, "PWD");
 	if (getcwd(pwd, PATH_MAX))

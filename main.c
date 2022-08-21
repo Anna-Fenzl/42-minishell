@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/20 17:50:05 by annaiarinov      ###   ########.fr       */
+/*   Updated: 2022/08/21 13:41:19 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	main(int argc, char **argv, char **env)
 {
 	t_list	*lexer;
 
-	g_global.error_code = 0
 	(void)argv;
+	g_global.error_code = 0;
 	if (argc != 1)
 		return (1);
 	set_default_env(&g_global, env); // in case we using global var there no need to pass it like option just call it in the function
