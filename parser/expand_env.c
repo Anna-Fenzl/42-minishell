@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:47:18 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 17:25:27 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 19:29:41 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	in_env(char **split, int i, int len)
 	{
 		tmp = ft_split(g_global.env[j], '=');//HOME = /home/sar
 		if (!ft_strncmp(split[i] + 1, tmp[0]//+`1 because our path begins with /
-				, ft_strlen(tmp[0])))
+				, ft_strlen(split[i] + 1)))
 		{
 			free(split[i]);
 			split[i] = ft_strdup(g_global.env[j] + len);//if HOME == HOME we clean our split and put env inside

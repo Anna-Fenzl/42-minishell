@@ -6,15 +6,14 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:09:36 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 19:07:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTE_H
 # define EXECUTE_H
 
-// would like to use a enum for trunc and append
-// rn mode 0 for trunc and 1 for append
+// mode 0 for trunc and 1 for append
 
 enum e_mode {trunc, append};
 

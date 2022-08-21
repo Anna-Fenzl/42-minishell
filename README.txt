@@ -6,18 +6,32 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/21 18:04:19 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/21 19:48:47 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+
+
+to fix
+--> the lexer list is still returning (null)elem first
+--> ft_split_new's bahvior needs to be recreated (env expanision, especially with quotes)
+--> what do the tokens mean? a lot of them could be just syntax error cause theyre not handled anyways
+--> the int pipes is basically already telling where the nodes should be :)
+
+to do
+--> find a good way to parse that stuff
 
 LAST PUSH
 
 err(char *msg) function does not exit anymore
+--> it should show that it failed tho
 the free_str function is added again
---> no leaks for now
-the double quotes do expand the variables
+--> no leaks for now (valgrind :))
+the double quotes do expand the variables now
+--> (but still a lot of weird behavior)
 single quotes == 1, double == 2
-the lexer list is still returning (null)elem first
+added the signals for intercative mode
 
 _______________________________________________________________________________________
 
@@ -30,6 +44,33 @@ the libft has some extra functions for two dimensional arrays:
 and for env 
 -> check_existence will check a split and search for a name until '\0' or '='
 	to work with env
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 TO DO:
 

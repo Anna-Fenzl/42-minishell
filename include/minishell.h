@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 18:08:06 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 19:13:47 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,17 @@
 
 typedef struct s_global
 {
+	char	*buf;
 	char	**env;
 	t_child	child;
 	int		error_code;
-	char	*buf;
 
 }				t_global;
 
 void	set_default_env(char **env);
+void	handle_signals(void);
+void	handle_history(char *line);
+void	handle_free(char *line, t_list *lexer);
 
 extern t_global	g_global;
 

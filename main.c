@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 18:54:36 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 19:32:11 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void	print_lexer(t_list *lexer)
 	}
 }
 
-// add history should not add '\n'
-//spaces inside of quotes are not preserved !
-// also bash has some weird behavior with $ and quotes or $"$"
+// ft_split_new is missing --> var_expansion is fucked
 void	minishell(void)
 {
 	t_list	*lexer;
@@ -40,17 +38,16 @@ void	minishell(void)
 	// builtin_env(g_global.env);
 	while (1)
 	{
+		handle_signals();
 		lexer = ft_lstnew(NULL);
 		g_global.buf = readline("minishell> ");
 		if (g_global.buf == NULL)
 			exit(0);
-		if (ft_strcmp(g_global.buf, "\0") != 0)
-			add_history(g_global.buf);
+		handle_history(g_global.buf);
 		if (!parse(g_global.buf, &lexer))
 			g_global.error_code = 127;
 		print_lexer(lexer);
-		free(g_global.buf);
-		free_lexer(lexer);
+		handle_free(g_global.buf, lexer);
 	}
 }
 
