@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:37:59 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 15:00:31 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:29:54 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int	lexing_dquote(char **input)
 	char	*str;
 
 	str = *input;
-	if (*str == '"')
+	if (*str == '\"')
 	{
 		str++;
-		while (*str && *str != '"')
+		while (*str && *str != '\"')
 			str++;
-		if (!*str || *str != '"')
+		if (!*str || *str != '\"')
 			return (0);
 	}
 	*input = str;
@@ -58,7 +58,7 @@ int	lexing_dquote(char **input)
 
 int	lexing_quotes(char **input)
 {
-	if (**input == '"' || **input == '\'')
+	if (**input == '\"' || **input == '\'')
 	{
 		if (!lexing_squote(input))
 			return (0);
@@ -88,9 +88,9 @@ void	which_quotes(t_list *lexer)
 	{
 		this = current->content;
 		if (this->str[0] == '\'')
-			this->quotes = 2;
-		else if (this->str[0] == '"')
 			this->quotes = 1;
+		else if (this->str[0] == '\"')
+			this->quotes = 2;
 		current = current->next;
 	}
 }

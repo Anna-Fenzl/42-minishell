@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 14:33:26 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:25:52 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	replace_var_in_q(char **split_q)
 		}
 		else//delete single qoutes
 		{
-			tmp = ft_strtrim(split_q[i], "'");
+			tmp = ft_strtrim(split_q[i], "\'");
 			free(split_q[i]);
 			split_q[i] = ft_strdup(tmp);
 			free(tmp);
@@ -145,29 +145,29 @@ void	which_pipe(t_list *lexer)
 	}
 }
 
-int	parse(char *buf, t_list *lexer)
+int	parse(char *buf, t_list **lexer)
 {
 	t_list	*tmp;
 
 	tmp = ft_lstnew(NULL);
 	if (!fill_lexer(buf, &tmp))
 	{
-		err("Quotes are not closed");
 		free_lexer(tmp);
+		err("Quotes are not closed\n");
 		return (0);
 	}
 	get_new_lexer(tmp);
-	change_lexer(tmp, &lexer);
+	change_lexer(tmp, lexer);
 	free_lexer(tmp);
-	if (lexer->next)
+	if ((*lexer)->next)
 	{
-		if (!check_tokens(lexer))
+		if (!check_tokens(*lexer))
 		{
-			parse_lexer(lexer);
-			if (!check_error(lexer) || syntax_error(lexer))
+			parse_lexer(*lexer);
+			if (!check_error(*lexer) || syntax_error(*lexer))
 				return (0);
-			which_pipe(lexer);
-			is_option(lexer);
+			which_pipe(*lexer);
+			is_option(*lexer);
 			return (1);
 		}
 	}

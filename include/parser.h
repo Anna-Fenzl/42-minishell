@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 14:50:13 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:59:55 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 // # include "../libft/libs.h"
 
+//change name to whatever is correct in the norm
 typedef enum s_tokens
 {
 	T_DQ,
@@ -53,7 +54,6 @@ typedef struct s_elem
 	int				quotes;
 }					t_elem;
 
-
 typedef struct s_vec
 {
 	int	cur_pos;
@@ -61,13 +61,10 @@ typedef struct s_vec
 	int	line_nmb;
 }				t_vec;
 
-
-
 int		lexing_squote(char **input);
 int		lexing_dquote(char **input);
 int		lexing_quotes(char **input);
 void	which_quotes(t_list *lexer);
-
 
 int		check_tokens1(t_elem *this);
 int		check_tokens2(t_elem *this);
@@ -92,7 +89,7 @@ int		has_error(t_elem *this, t_elem *next);
 int		check_error(t_list *lexer);
 int		syntax_error(t_list *lexer);
 
-void	free_str(t_list *lexer);
+void	free_str(t_list **lexer);
 void	free_lexer(t_list *lexer);
 
 void	add_lexer(t_list **lexer, char *input, int len, t_tokens type);
@@ -109,9 +106,7 @@ void	replace_var_in_q(char **split_q);
 void	replace_var_env(t_list *lexer);
 void	parse_lexer(t_list *lexer);
 void	which_pipe(t_list *lexer);
-int		parse(char *buf, t_list *lexer);
-
-
+int		parse(char *buf, t_list **lexer);
 
 t_elem	which_token(char *input);
 

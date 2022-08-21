@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:47:18 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 15:30:38 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:25:27 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	**replace_var(char *s)
 	int		len;
 
 	i = 0;
-	split = ft_split(s, '\0');//ft_new_split
+	split = ft_split(s, '\"');
 	while (split[i])
 	{
 		len = ft_strlen(split[i]);

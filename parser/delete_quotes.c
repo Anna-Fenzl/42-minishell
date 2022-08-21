@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   delete_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 14:27:54 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 14:25:30 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:57:04 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ void	not_in_quotes(char *s, t_vec *cpt)
  * RETURN:
  * DESCRIPTION: create 2D array with commands without quotes
  *
- *
+ *====> NEED TO PROTECT MALLOC
+ * 
  ****************/
 char	**split_cmd_table(char *s)
 {
@@ -111,17 +112,19 @@ char	**split_cmd_table(char *s)
 	char	**str;
 
 	str = malloc(sizeof(char *) * (count_words(s) + 1));
+	if (str == NULL)
+		return (NULL);
 	init_position(&cpt);
 	while (s[cpt.cur_pos])
 	{
-		if (s[cpt.cur_pos] != '"' && s[cpt.cur_pos] != '\'')
+		if (s[cpt.cur_pos] != '\"' && s[cpt.cur_pos] != '\'')
 		{
 			not_in_quotes(s, &cpt);
 			str[cpt.line_nmb++] = ft_strdupn(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
 		}
-		else if (s[cpt.cur_pos] == '"')
+		else if (s[cpt.cur_pos] == '\"')
 		{
-			delete_quotes(s, &cpt, '"');
+			delete_quotes(s, &cpt, '\"');
 			str[cpt.line_nmb++] = ft_strdupn(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
 		}
 		else if (s[cpt.cur_pos] == '\'')

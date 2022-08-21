@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:31:15 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 14:16:27 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:53:16 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	err(char *msg)
 {
 	write(STDERR_FILENO, msg, ft_strlen(msg));
-	exit(1);
+	return (1);
 }
 
 /***************

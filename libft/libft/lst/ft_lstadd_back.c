@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:43:15 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/03 18:52:09 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/21 16:43:00 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (*lst)
 	{
 		tmp = ft_lstlast(*lst);
-		tmp->next = &*new;
+		tmp->next = new;
 	}
 	else
 		*lst = new;

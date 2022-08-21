@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:39:16 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 14:16:50 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:31:37 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_elem	*existing_token(void)
 {
 	static t_elem	tokens[]
 		= {
-	{.str = "<<",.len = 2, .this_pipe = 0, .type = T_REDIR4, .quotes = 0},
+	{.str = "<<", .len = 2, .this_pipe = 0, .type = T_REDIR4, .quotes = 0},
 	{">>", 2, 0, T_REDIR3, 0},
 	{">|", 2, 0, T_REDIR1, 0},
 	{"<>", 2, 0, T_REDIR5, 0},
@@ -38,7 +38,6 @@ t_elem	*existing_token(void)
 
 	return (tokens);
 }
-
 
 /***************
  * NAME: which_token

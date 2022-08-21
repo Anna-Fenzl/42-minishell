@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   option.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:30:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 14:16:38 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:05:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
  *
  *
  ****************/
-void apply_option(t_elem *this, int i, t_list *prev_node)
+void	apply_option(t_elem *this, int i, t_list *prev_node)
 {
-	t_elem *prev;
+	t_elem	*prev;
 
 	if (!this->str[i] && i > 1)
 	{
@@ -40,13 +40,12 @@ void apply_option(t_elem *this, int i, t_list *prev_node)
  *
  *
  ****************/
-void is_option(t_list *lexer)
+void	is_option(t_list *lexer)
 {
-	t_list *cursor;
-	t_list *prev;
-
-	t_elem *this;
-	int i;
+	t_list	*cursor;
+	t_list	*prev;
+	t_elem	*this;
+	int		i;
 
 	prev = lexer;
 	cursor = lexer->next;

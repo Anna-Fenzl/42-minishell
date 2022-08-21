@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:40:08 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 14:16:35 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:48:20 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	fill_lexer(char *input, t_list **lexer)
 	while (*input)
 	{
 		this = which_token(input);
-		if ((this.str || *input == '"' || *input == '\'') && last != input) // in case it in the begin of cmd line its bug that we shuld ignore and dont in lex,
+		if ((this.str || *input == '\"' || *input == '\'') && last != input) // in case it in the begin of cmd line its bug that we shuld ignore and dont in lex,
 			add_lexer(lexer, last, input - last, T_ARGS); // in case this spec char on the right place push back in the list
 		if (this.str) // in case this,str exist != nill
 		{

@@ -1,14 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   README                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/19 18:48:36 by afenzl           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    README.txt                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#              #
+#    Updated: 2022/08/21 18:04:19 by afenzl           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+LAST PUSH
+
+err(char *msg) function does not exit anymore
+the free_str function is added again
+--> no leaks for now
+the double quotes do expand the variables
+single quotes == 1, double == 2
+the lexer list is still returning (null)elem first
+
+_______________________________________________________________________________________
 
 the libft has some extra functions for two dimensional arrays:
 -> ft_free2: it frees a split
@@ -30,6 +41,8 @@ use signal function, it takes another function 'void' and the function just take
 --- in child processes set signals back to default
 use SIG_DFL
 
+
+--> parse and exec
 
 
 
