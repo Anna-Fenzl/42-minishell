@@ -6,13 +6,15 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/22 16:32:54 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 19:21:48 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
+// ONLY NEED CMD the 4 REDIRS and DELIM
+// but ofc the syntax errors too :)
 typedef enum e_tokens
 {
 	T_DQ,

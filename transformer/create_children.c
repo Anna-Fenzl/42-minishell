@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 19:15:29 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 19:25:55 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ int	handle_cmds(t_list *cur, int this_pipe)
 int	handle_redirs(t_list *cur, int this_pipe)
 {
 	if (((t_elem *)cur->content)->type == T_REDIR4)
-		handle_here_dock(cur, this_pipe);
+		if (handle_here_dock(cur, this_pipe) == 1)
+			return (1);
 	else if (((t_elem *)cur->content)->type == T_REDIR2)
-		handle_infile(cur, this_pipe);
+		if (handle_infile(cur, this_pipe) == 1)
+			return (1);
 	else if (((t_elem *)cur->content)->type == T_REDIR3)
 		g_global.child[this_pipe].append = 1;
 	else if (((t_elem *)cur->content)->type == T_REDIR1)
@@ -72,7 +74,8 @@ int	handle_redirs(t_list *cur, int this_pipe)
 }
 
 /*
-	CHECK RETURN VALUES OF FUNCTIONS !!!
+	ERRORCODES NOT SET !!
+	just return 1 on error
 
 	goes trough the tokenised parsing list and assigns it to child[i]
 	1. t_CMD && T_ARGS --> char **cmds
@@ -97,8 +100,10 @@ int	create_children(t_list **lexer)
 	{
 		this_pipe = ((t_elem *)cur->content)->this_pipe;
 		handle_cmds(cur, this_pipe);
-		handle_redirs(cur, this_pipe);
-		handle_outfile(cur, this_pipe);
+		if (handle_redirs(cur, this_pipe) == 1)
+			return (1);
+		if (handle_outfile(cur, this_pipe) == 1)
+			return (1);
 		cur = cur->next;
 	}
 	debug_print_children();
