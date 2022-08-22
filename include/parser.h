@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 19:40:01 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 12:40:13 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ typedef enum e_tokens
 	T_DQ,
 	T_SQ,
 	T_SEMI,
-	T_SPACE,
-	T_REDIR1,	//>
-	T_REDIR2,	//<
-	T_REDIR3,	//>>
-	T_REDIR4,	//<<
-	T_REDIR5,	//<>
-	T_ARGS,
-	T_CMD,
-	T_FD,
-	T_OPT,
-	T_DELIMITER,
-	T_EQUAL,
-	T_PIPE,
-	T_OP_BRA,
-	T_CL_BRA,
-	T_OP_PAR,
-	T_CL_PAR,
-	T_ENV,
-	T_BSLASH,
 	T_AND,
-	T_RES,
+	T_BSLASH,
+	T_SPACE,
+	T_ARGS,
+	T_REDIR5,	//<> syntax error
+	T_REDIR1,	//> truncate
+	T_REDIR2,	//<
+	T_REDIR3,	//>> append
+	T_REDIR4,	//<< heredoc
+	T_CMD,
+	T_FD,		//>> > < STIMMT
+	T_OPT,		// flags ARGS
+	T_DELIMITER,// STIMMT
+	T_PIPE,
+	T_EQUAL,	//ARGS wie string
+	T_OP_BRA,	//wie strind
+	T_CL_BRA,	//wie string
+	T_OP_PAR,	//-->error
+	T_CL_PAR,	//-->error
+	// T_ENV,
+	// T_RES,
 	T_NULL
 }			t_tokens;
 
