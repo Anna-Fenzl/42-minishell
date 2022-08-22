@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 12:02:32 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/16 13:47:51 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 19:35:09 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 static char	*join(char *s1, char *s2, char *new)
 {
@@ -70,14 +70,14 @@ char	**get_possible_paths(char **env)
 	return (split);
 }
 
-char	*ft_get_path(char **env, char *cmd)
+char	*ft_get_path(char *cmd)
 {
 	int		i;
 	char	**split;
 	char	*tmp;
 
 	i = 0;
-	split = get_possible_paths(env);
+	split = get_possible_paths(g_global.env);
 	if (ft_strchr(cmd, '/') != 0 && access(cmd, 0) == 0)
 		return (cmd);
 	while (split != NULL && split[i] != NULL && cmd != NULL)

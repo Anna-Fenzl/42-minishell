@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 19:25:55 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 19:30:17 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,30 @@ int	handle_cmds(t_list *cur, int this_pipe)
 	return (0);
 }
 
+/*
+	1. REDIR IN 
+		- REDIR 4 --> << here_dock
+		(reads from terminal and writes to tmp)
+		- REDIR 2 --> <
+		(checks if file exists and has permisions)
+		(infile --> char *infile)
+	2. REDIR OUT
+		- REDIR3 --> >> append
+		- REDIR1 --> > trunc
+		(opens all the files accordingly)
+*/
 int	handle_redirs(t_list *cur, int this_pipe)
 {
 	if (((t_elem *)cur->content)->type == T_REDIR4)
+	{
 		if (handle_here_dock(cur, this_pipe) == 1)
 			return (1);
+	}
 	else if (((t_elem *)cur->content)->type == T_REDIR2)
+	{
 		if (handle_infile(cur, this_pipe) == 1)
 			return (1);
+	}
 	else if (((t_elem *)cur->content)->type == T_REDIR3)
 		g_global.child[this_pipe].append = 1;
 	else if (((t_elem *)cur->content)->type == T_REDIR1)
@@ -79,16 +95,7 @@ int	handle_redirs(t_list *cur, int this_pipe)
 
 	goes trough the tokenised parsing list and assigns it to child[i]
 	1. t_CMD && T_ARGS --> char **cmds
-	2. REDIR IN 
-		- REDIR 4 --> << here_dock
-		(reads from terminal and writes to tmp)
-		- REDIR 2 --> <
-		(checks if file exists and has permisions)
-		(infile --> char *infile)
-	3. REDIR OUT
-		- REDIR3 --> >> append
-		- REDIR1 --> > trunc
-		(opens all the files accordingly)
+	2. REDIR
 */
 int	create_children(t_list **lexer)
 {
