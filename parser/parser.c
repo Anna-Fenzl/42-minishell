@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 17:25:52 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 11:36:31 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,15 @@ void	which_pipe(t_list *lexer)
 	}
 }
 
+// void	rem_first(t_list **lexer)
+// {
+// 	t_list	*tmp;
+
+// 	tmp = (*lexer)->next;
+// 	free(*lexer);
+// 	(*lexer) = tmp;
+// }
+
 int	parse(char *buf, t_list **lexer)
 {
 	t_list	*tmp;
@@ -153,8 +162,8 @@ int	parse(char *buf, t_list **lexer)
 	if (!fill_lexer(buf, &tmp))
 	{
 		free_lexer(tmp);
-		err("Quotes are not closed\n");
-		return (0);
+		if (err("Quotes are not closed\n") == 1)
+			return (0);
 	}
 	get_new_lexer(tmp);
 	change_lexer(tmp, lexer);
@@ -168,6 +177,7 @@ int	parse(char *buf, t_list **lexer)
 				return (0);
 			which_pipe(*lexer);
 			is_option(*lexer);
+			// rem_first(lexer);
 			return (1);
 		}
 	}

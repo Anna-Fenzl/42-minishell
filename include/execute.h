@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 19:07:35 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 11:45:25 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ typedef struct s_child
 	int				fd_out;
 	char			*infile;
 	char			*outfile;
-	char			*cmd;
-	char			**flags;
+	char			**cmd;
 	struct s_child	*next;
 }	t_child;
 
