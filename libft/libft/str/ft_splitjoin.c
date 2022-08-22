@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free2.c                                         :+:      :+:    :+:   */
+/*   ft_splitjoin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 21:47:59 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 16:13:53 by afenzl           ###   ########.fr       */
+/*   Created: 2022/08/22 18:15:40 by afenzl            #+#    #+#             */
+/*   Updated: 2022/08/22 18:16:08 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-/**
- * @brief frees a two dimentional char array
- * 
- * @param char **
- */
-void	ft_free2(char **split)
+char	**ft_splitjoin(char **split, char *str)
 {
-	int	i;
+	char	**ret;
+	int		len;
+	int		i;
 
 	i = 0;
-	while (split != NULL && split[i] != NULL)
+	if (split == NULL)
+		return (ft_split(str, '\0'));
+	len = ft_splitlen(split);
+	if (str == NULL)
+		return (split);
+	ret = malloc(sizeof(char *) * (len + 2));
+	if (ret == NULL)
+		return (NULL);
+	while (split && split[i] != NULL)
 	{
-		free(split[i]);
+		ret[i] = ft_strdup(split[i]);
 		i++;
 	}
-	if (split != NULL)
-		free(split);
+	ret[i++] = ft_strdup(str);
+	ret[i] = NULL;
+	ft_free2(split);
+	return (ret);
 }

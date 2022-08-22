@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 13:01:37 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 16:21:54 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_global
 	char	*buf;
 	char	**env;
 	t_child	*child;
+	int		children_num;
 	int		error_code;
 
 }				t_global;

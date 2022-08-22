@@ -51,6 +51,7 @@ STR =	ft_strlen.c		\
 		ft_split.c		\
 		ft_splitlen.c	\
 		ft_splitdup.c	\
+		ft_splitjoin.c	\
 		ft_itoa.c		\
 		ft_strmapi.c	\
 		ft_striteri.c	\

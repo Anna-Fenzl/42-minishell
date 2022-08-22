@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/22 13:06:13 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 15:08:50 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,14 +145,14 @@ void	which_pipe(t_list *lexer)
 	}
 }
 
-// void	rem_first(t_list **lexer)
-// {
-// 	t_list	*tmp;
+void	rem_first(t_list **lexer)
+{
+	t_list	*tmp;
 
-// 	tmp = (*lexer)->next;
-// 	free(*lexer);
-// 	(*lexer) = tmp;
-// }
+	tmp = (*lexer)->next;
+	free(*lexer);
+	(*lexer) = tmp;
+}
 
 int	parse(char *buf, t_list **lexer)
 {
@@ -177,7 +177,7 @@ int	parse(char *buf, t_list **lexer)
 				return (0);
 			which_pipe(*lexer);
 			is_option(*lexer);
-			// rem_first(lexer);
+			rem_first(lexer);
 			return (1);
 		}
 	}
