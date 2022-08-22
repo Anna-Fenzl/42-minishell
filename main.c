@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 19:15:45 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 19:27:00 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 t_global	g_global;
 
 // ft_split_new is missing --> var_expansion is fucked
+		// if (!parse(g_global.buf, &lexer))
+		// 	g_global.error_code = 258;
+		// print_lexer(lexer);
+		// handle_free(g_global.buf, lexer);
 void	minishell(void)
 {
 	t_list	*lexer;
@@ -27,10 +31,6 @@ void	minishell(void)
 		if (g_global.buf == NULL)
 			exit(0);
 		handle_history(g_global.buf);
-		// if (!parse(g_global.buf, &lexer))
-		// 	g_global.error_code = 258;
-		// print_lexer(lexer);
-		// handle_free(g_global.buf, lexer);
 		if (parse(g_global.buf, &lexer))
 		{
 			print_lexer(lexer);
