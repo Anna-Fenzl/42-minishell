@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/22 18:22:55 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/22 19:16:54 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM := rm -f
 
-SRCEXEC =	main.c env.c utils.c\
+SRCEXEC =	main.c env.c utils.c debug.c\
 		./executor/built_in/cd.c ./executor/built_in/echo.c ./executor/built_in/env.c \
 		./executor/built_in/exit.c ./executor/built_in/export.c ./executor/built_in/pwd.c \
 		./executor/built_in/unset.c ./executor/built_in/utils.c \
@@ -24,7 +24,7 @@ SRCEXEC =	main.c env.c utils.c\
 SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c ./parser/delete_quotes.c \
 		./parser/expand_env.c ./parser/free.c ./parser/lexer.c ./parser/option.c ./parser/parser.c \
 		./parser/quotes.c ./parser/token.c ./parser/error.c	\
-		./transformer/transform.c ./transformer/create_children.c
+		./transformer/transform.c ./transformer/create_children.c ./transformer/redir.c
 
 LIBS = ./libft/libs.a
 
