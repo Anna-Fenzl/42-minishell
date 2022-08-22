@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 11:35:30 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 13:11:22 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	minishell(void)
 {
 	t_list	*lexer;
 
-	// builtin_env(g_global.env);
 	while (1)
 	{
 		handle_signals();
@@ -47,6 +46,7 @@ void	minishell(void)
 		if (!parse(g_global.buf, &lexer))
 			g_global.error_code = 258;
 		print_lexer(lexer);
+		transform(lexer);
 		handle_free(g_global.buf, lexer);
 
 		// if (parse(g_global.buf, &lexer))

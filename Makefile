@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/22 11:07:19 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/22 13:02:20 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCEXEC =	main.c env.c utils.c\
 
 SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c ./parser/delete_quotes.c \
 		./parser/expand_env.c ./parser/free.c ./parser/lexer.c ./parser/option.c ./parser/parser.c \
-		./parser/quotes.c ./parser/token.c ./parser/error.c
+		./parser/quotes.c ./parser/token.c ./parser/error.c	\
+		./transformer/transform.c
 
 LIBS = ./libft/libs.a
 

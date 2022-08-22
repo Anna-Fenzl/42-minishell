@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 19:13:47 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 13:01:37 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@
 # include "readline/readline.h"
 # include "readline/history.h"
 # include "../libft/libs.h"
-# include "execute.h"
 # include "parser.h"
+# include "transform.h"
+# include "execute.h"
 
 typedef struct s_global
 {
 	char	*buf;
 	char	**env;
-	t_child	child;
+	t_child	*child;
 	int		error_code;
 
 }				t_global;

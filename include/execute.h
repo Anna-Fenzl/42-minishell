@@ -6,28 +6,12 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 11:45:25 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/22 13:01:15 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTE_H
 # define EXECUTE_H
-
-// mode 0 for trunc and 1 for append
-
-enum e_mode {trunc, append};
-
-typedef struct s_child
-{
-	enum e_mode		mode;
-	int				fd[2];
-	int				fd_in;
-	int				fd_out;
-	char			*infile;
-	char			*outfile;
-	char			**cmd;
-	struct s_child	*next;
-}	t_child;
 
 // builtins
 int		builtin_cd(char ***env, char *path);
