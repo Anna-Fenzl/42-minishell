@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:00 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:35:15 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:33:06 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	set_old_pwd(char ***env, int line)
 	if (line >= 0)
 	{
 		tmp = ft_strjoin("OLDPWD=", &(*env)[line][3]);
-		builtin_export(env, tmp);
+		handle_export(env, tmp);
 		free(tmp);
 	}
 	else
-		builtin_export(env, "OLDPWD=");
+		handle_export(env, "OLDPWD=");
 }
 
 void	change_pwd(char ***env)
@@ -97,17 +97,24 @@ int	to_home_dir(char ***env)
 	return (0);
 }
 
-// dont need to handle macros
-int	builtin_cd(char ***env, char *path)
+/*
+	dont need to handle macros
+	no arguments --> to HOME
+	can take more than one arg, only gonna check the first one
+*/
+int	builtin_cd(char ***env, char **path)
 {
 	if (path == NULL)
+		return (1);
+	printf("path in cd is %s\n", path[1]);
+	if (path[1] == NULL)
 	{
 		if (to_home_dir(env) == 1)
 			return (EXIT_FAILURE);
 	}
 	else
 	{
-		if (chdir(path) < 0)
+		if (chdir(path[1]) < 0)
 		{
 			printf("minishell: cd: No such file or directory");
 			return (EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:16 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:30:34 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:28:28 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	rem_old_var(char ***env, int line)
 	*env = tmp;
 }
 
-int	builtin_unset(char ***env, char *str)
+int	handle_unset(char ***env, char *str)
 {
 	int	line;
 	int	i;
@@ -58,4 +58,18 @@ int	builtin_unset(char ***env, char *str)
 		rem_old_var(env, line);
 	}
 	return (EXIT_SUCCESS);
+}
+
+int	builtin_unset(char ***env, char **args)
+{
+	int	i;
+
+	i = 1;
+	while (args[i] != NULL)
+	{
+		if (handle_unset(env, args[i]) == 1)
+			return (1);
+		i++;
+	}
+	return (0);
 }

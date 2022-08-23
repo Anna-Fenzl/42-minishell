@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 20:56:06 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:14:47 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv, char **env)
 	if (argc != 1)
 		return (1);
 	set_default_env(env);
-	builtin_env(g_global.env);
+	// builtin_env(g_global.env);
 	minishell();
 	return (0);
 }

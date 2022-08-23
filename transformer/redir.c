@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:11:48 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 19:12:59 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:39:16 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	handle_here_dock(t_list *cur, int this_pipe)
 /*
 	checks infile and sets it in child
 */
-int	handle_infile(t_list *cur, int this_pipe)
+int	redir_infile(t_list *cur, int this_pipe)
 {
 	int	fd;
 

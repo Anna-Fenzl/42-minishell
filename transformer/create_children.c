@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 19:30:17 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 14:56:39 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	handle_outfile(t_list *cur, int this_pipe)
 int	handle_cmds(t_list *cur, int this_pipe)
 {
 	if (((t_elem *)cur->content)->type == T_CMD
-		|| ((t_elem *)cur->content)->type == T_ARGS)
+		|| ((t_elem *)cur->content)->type == T_ARGS
+		|| ((t_elem *)cur->content)->type == T_OPT)
 	{
 		g_global.child[this_pipe].cmd = ft_splitjoin
 			(g_global.child[this_pipe].cmd, ((t_elem *)cur->content)->str);

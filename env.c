@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:23:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/21 18:07:42 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:30:52 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	shlvl_edgecases(char **env, int lvl)
 		if (lvl >= 1000)
 			printf("minishell: warning: shell level (%i)to high"
 				", resetting to 1\n", lvl);
-		builtin_export(&env, "SHLVL=1");
+		handle_export(&env, "SHLVL=1");
 		return (1);
 	}
 	else if (lvl < 0)
 	{
-		builtin_export(&env, "SHLVL=0");
+		handle_export(&env, "SHLVL=0");
 		return (1);
 	}
 	return (0);
@@ -67,7 +67,7 @@ void	handle_shlvl(char **env)
 	{
 		num = ft_itoa(lvl + 1);
 		var = ft_strjoin("SHLVL=", num);
-		builtin_export(&env, var);
+		handle_export(&env, var);
 		free(num);
 		free(var);
 	}
@@ -82,16 +82,16 @@ void	set_default_env(char **env)
 	char	*tmp;
 
 	g_global.env = ft_splitdup(env);
-	builtin_unset(&g_global.env, "PWD");
+	handle_unset(&g_global.env, "PWD");
 	if (getcwd(pwd, PATH_MAX))
 	{
 		tmp = ft_strjoin("PWD=", pwd);
-		builtin_export(&g_global.env, tmp);
+		handle_export(&g_global.env, tmp);
 		free(tmp);
 	}
 	if (check_existence(g_global.env, "SHLVL=") < 0)
-		builtin_export(&g_global.env, "SHLVL=1");
+		handle_export(&g_global.env, "SHLVL=1");
 	else
 		handle_shlvl(g_global.env);
-	builtin_export(&g_global.env, "_=/usr/bin/env");
+	handle_export(&g_global.env, "_=/usr/bin/env");
 }

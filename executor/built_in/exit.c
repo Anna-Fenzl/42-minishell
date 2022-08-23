@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/19 14:57:58 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:06:50 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ int	builtin_exit(char **arg)
 	long	exitcode;
 
 	printf("exit\n");
-	exitcode = atoll_check(arg[0]);
-	if (ft_splitlen(arg) > 1)
+	if (arg[1] != NULL)
+		exitcode = atoll_check(arg[1]);
+	if (ft_splitlen(arg) > 2)
 	{
 		printf("minishell: exit: too many arguments\n");
 		return (EXIT_FAILURE);

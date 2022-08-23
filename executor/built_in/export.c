@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:44:26 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/23 15:23:47 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,12 @@ void	set_new_var(char ***env, char *str)
 	*env = tmp;
 }
 
-int	builtin_export(char ***env, char *str)
+int	handle_export(char ***env, char *str)
 {
 	int		line;
 
 	line = check_existence(*env, str);
-	if (str == NULL)
-		export_alone(env);
-	else if (check_name(str) == 1)
+	if (check_name(str) == 1)
 	{
 		printf("minshell: export: `%s': not a valid identifier\n", str);
 		return (EXIT_FAILURE);
@@ -78,4 +76,20 @@ int	builtin_export(char ***env, char *str)
 	else
 		set_new_var(env, str);
 	return (EXIT_SUCCESS);
+}
+
+int	builtin_export(char ***env, char **args)
+{
+	int	i;
+
+	i = 1;
+	if (args[1] == NULL)
+		export_alone(env);
+	while (args[i] != NULL)
+	{
+		if (handle_export(env, args[i]) == 1)
+			return (1);
+		i++;
+	}
+	return (0);
 }
