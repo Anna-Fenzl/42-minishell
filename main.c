@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/23 15:14:47 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 15:11:51 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,24 @@ void	minishell(void)
 {
 	t_list	*lexer;
 
-	int i = 0;
 	while (1)
 	{
 		// handle_signals();
 		lexer = ft_lstnew(NULL);
-		g_global.buf = readline("minishell> ");
-		// if (i == 1)
-		// 	sleep(100);
+		if (isatty(0))
+			g_global.buf = readline("minishell> ");
+		else
+			g_global.buf = get_next_line(0);
 		if (g_global.buf == NULL)
 			exit(0);
 		handle_history(g_global.buf);
 		if (parse(g_global.buf, &lexer))
 		{
-			print_lexer(lexer);
-			transform(lexer);
-			execute();
+			// print_lexer(lexer);
+			if (transform(lexer) == 0)
+				execute();
 		}
 		handle_free(g_global.buf, lexer);
-		i++;
 	}
 }
 
@@ -52,7 +51,6 @@ int	main(int argc, char **argv, char **env)
 	if (argc != 1)
 		return (1);
 	set_default_env(env);
-	// builtin_env(g_global.env);
 	minishell();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/23 14:56:39 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 15:18:00 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	open_outfiles(char *outfile, int this_pipe)
 	int	fd;
 
 	if (g_global.child[this_pipe].append == 1)
+	{
 		fd = open(outfile, O_CREAT | O_WRONLY | O_APPEND,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	}
 	else
 		fd = open(outfile, O_CREAT | O_WRONLY | O_TRUNC,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
@@ -108,9 +110,8 @@ int	create_children(t_list **lexer)
 	{
 		this_pipe = ((t_elem *)cur->content)->this_pipe;
 		handle_cmds(cur, this_pipe);
-		if (handle_redirs(cur, this_pipe) == 1)
-			return (1);
-		if (handle_outfile(cur, this_pipe) == 1)
+		if (handle_redirs(cur, this_pipe) == 1
+			|| handle_outfile(cur, this_pipe) == 1)
 			return (1);
 		cur = cur->next;
 	}

@@ -6,13 +6,13 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/21 19:48:47 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/24 15:54:40 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
-
+does not touch outfile if infile invalid
 to fix
 --> the lexer list is still returning (null)elem first
 --> ft_split_new's bahvior needs to be recreated (env expanision, especially with quotes)
@@ -20,7 +20,10 @@ to fix
 --> the int pipes is basically already telling where the nodes should be :)
 
 to do
---> find a good way to parse that stuff
+-->appending doesnt work --> DONE
+--> the redirout in single builtins
+--> figure out why exit code 255
+-->signals inside children
 
 LAST PUSH
 
