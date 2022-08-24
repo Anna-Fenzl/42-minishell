@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/22 19:16:42 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 21:28:30 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_global
 void	print_lexer(t_list *lexer);
 void	debug_print_children(void);
 
+//setup
 void	set_default_env(char **env);
 void	handle_signals(void);
 void	handle_history(char *line);

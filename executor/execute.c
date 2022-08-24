@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:35:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 19:36:54 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 21:27:29 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
 /*
 	waits for the children to terminate
@@ -40,6 +40,17 @@ void	redir_and_exec(int tmpin, int tmpout, int i, int *fd)
 	exit(1);
 }
 
+/*
+	NOT IN INTERACTIVE mode
+	Ctrl -C (SIGINT) should stop the child (SIGTERM) i guess
+	Ctrl -\ (SIGQUIT) should default
+	Ctrl -D 
+*/
+void	set_signals(void)
+{
+	signal(SIGQUIT, SIG_DFL);
+}
+
 int	handle_pipes(int *tmpin, int *tmpout, int i, int *fd)
 {
 	int	id;
@@ -55,6 +66,7 @@ int	handle_pipes(int *tmpin, int *tmpout, int i, int *fd)
 	}
 	if (id == 0)
 	{
+		set_signals();
 		close(fd[0]);
 		redir_and_exec(*tmpin, *tmpout, i, fd);
 	}

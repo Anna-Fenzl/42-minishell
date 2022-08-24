@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 19:41:30 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 20:14:43 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	minishell(void)
 			// print_lexer(lexer);
 			if (transform(lexer) == 0)
 				execute();
+			unlink(".ms_tmp");
 		}
 		handle_free(g_global.buf, lexer);
 	}
@@ -53,3 +54,4 @@ int	main(int argc, char **argv, char **env)
 	minishell();
 	return (0);
 }
+

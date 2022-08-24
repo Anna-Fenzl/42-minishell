@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:15:05 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/23 15:04:02 by afenzl           ###   ########.fr       */
+/*   Created: 2022/08/03 17:15:13 by afenzl            #+#    #+#             */
+/*   Updated: 2022/08/24 21:21:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
-int	builtin_env(void)
+/**
+ * @brief writes the absolute pathname of the current working
+ * 
+ * @returns int (if successfull 0, if not 1)
+ */
+
+int	builtin_pwd(void)
 {
-	int	i;
+	char	path[PATH_MAX];
 
-	if (g_global.env == NULL)
-		return (1);
-	i = 0;
-	while (g_global.env && g_global.env[i] != NULL)
+	if (getcwd(path, PATH_MAX))
 	{
-		if (ft_strchr(g_global.env[i], '=') != NULL)
-			ft_printf("%s\n", g_global.env[i]);
-		i++;
+		printf("%s\n", path);
+		return (EXIT_SUCCESS);
 	}
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

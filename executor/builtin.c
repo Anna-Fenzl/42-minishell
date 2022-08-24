@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:47:01 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 19:40:05 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 21:27:25 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
 /*
 	checks if cmd is a builtin and executes it
@@ -84,6 +84,7 @@ int	handle_single_builtin(int tmpout)
 	int	fd;
 	int	ret;
 
+	printf("-----------SINGLE BUILTIN--------------\n");
 	if (check_if_builtin(g_global.child[0].cmd) == 1)
 	{
 		if (g_global.child[0].outfile != NULL)
@@ -96,10 +97,10 @@ int	handle_single_builtin(int tmpout)
 			}
 			dup2(fd, STDOUT_FILENO);
 			close(fd);
-			ret = exec_builtin(g_global.child[0].cmd);
-			dup2(tmpout, STDOUT_FILENO);
-			return (ret);
 		}
+		ret = exec_builtin(g_global.child[0].cmd);
+		dup2(tmpout, STDOUT_FILENO);
+		return (ret);
 	}
 	return (-1);
 }

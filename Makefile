@@ -6,42 +6,57 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/24 18:59:38 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/24 21:31:00 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror 
 RM := rm -f
 
-SRCEXEC =	main.c env.c utils.c debug.c\
-		./executor/built_in/cd.c ./executor/built_in/echo.c ./executor/built_in/env.c \
-		./executor/built_in/exit.c ./executor/built_in/export.c ./executor/built_in/pwd.c \
-		./executor/built_in/unset.c ./executor/built_in/utils.c \
-		./executor/child/execute.c ./executor/child/get_path.c ./executor/child/builtin.c	\
-		./executor/child/redir.c
+SRCMAIN = 	main.c debug.c\
 
-SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c ./parser/delete_quotes.c \
-		./parser/expand_env.c ./parser/free.c ./parser/lexer.c ./parser/option.c ./parser/parser.c \
-		./parser/quotes.c ./parser/token.c ./parser/error.c	\
-		./transformer/transform.c ./transformer/create_children.c ./transformer/infile.c
+SRCSETUP = ./setup/env.c setup/utils.c
+
+SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c \
+			./parser/delete_quotes.c ./parser/expand_env.c \
+			./parser/free.c ./parser/lexer.c ./parser/option.c \
+			./parser/parser.c ./parser/quotes.c ./parser/token.c \
+			./parser/error.c
+		
+SRCTRANS =	./transformer/transform.c ./transformer/create_children.c \
+			./transformer/infile.c
+
+SRCBUILT =	./built_in/cd.c ./built_in/echo.c ./built_in/env.c \
+		./built_in/exit.c ./built_in/export.c ./built_in/pwd.c \
+		./built_in/unset.c ./built_in/utils.c \
+
+SRCEXEC =	./executor/execute.c ./executor/get_path.c \
+			./executor/builtin.c ./executor/redir.c
+
 
 LIBS = ./libft/libs.a
 
-OBJEXEC = $(SRCEXEC:.c=.o)
+OBJMAIN = $(SRCMAIN:.c=.o)
+OBJSETUP = $(SRCSETUP:.c=.o)
 OBJPARSE = $(SRCPARSE:.c=.o)
+OBJTRANS = $(SRCTRANS:.c=.o)
+OBJBUILT = $(SRCBUILT:.c=.o)
+OBJEXEC = $(SRCEXEC:.c=.o)
+
+OBJ =  $(OBJMAIN) $(OBJSETUP) $(OBJPARSE) $(OBJTRANS) $(OBJBUILT) $(OBJEXEC)
 
 all: $(NAME)
 
-$(NAME): $(OBJEXEC) $(OBJPARSE)
+$(NAME): $(OBJ)
 	make -C ./libft
-	$(CC) $(CFLAGS) $(OBJEXEC) $(OBJPARSE) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -L./libft -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline -ls -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -L/Users/$(USER)/goinfre/.brew/opt/readline/lib -L./libft -iquote /Users/$(USER)/goinfre/.brew/opt/readline/include/ -lreadline -ls -o $(NAME)
 
 clean:
 	make fclean -C ./libft
-	$(RM) $(OBJEXEC) $(OBJPARSE)
+	$(RM) $(OBJ)
 
 fclean: clean
 	$(RM) $(NAME)

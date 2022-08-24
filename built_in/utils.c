@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 20:01:46 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:41:26 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 21:21:55 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
 /*
 	checks until '\0' or '=' if NAME is existent in env

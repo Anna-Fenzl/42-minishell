@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:15:13 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:30:15 by afenzl           ###   ########.fr       */
+/*   Created: 2022/08/03 17:49:14 by afenzl            #+#    #+#             */
+/*   Updated: 2022/08/24 21:21:37 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
-/**
- * @brief writes the absolute pathname of the current working
- * 
- * @returns int (if successfull 0, if not 1)
- */
-
-int	builtin_pwd(void)
+int	main(int argc, char **argv, char **env)
 {
-	char	path[PATH_MAX];
+	char	**environ;
 
-	if (getcwd(path, PATH_MAX))
-	{
-		printf("%s\n", path);
-		return (EXIT_SUCCESS);
-	}
-	return (EXIT_FAILURE);
+	(void)argv;
+	if (argc < 0)
+		printf("error\n");
+	environ = ft_splitdup(env);
+	system("leaks a.out");
+	return (0);
 }

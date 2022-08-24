@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:23:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/23 15:30:52 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 21:31:13 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/minishell.h"
+#include "../include/minishell.h"
 
 // man 7 environ --> info about env enviroment
 char	*skip_until_value(char *str)

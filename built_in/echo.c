@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:03 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/23 14:59:26 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 21:21:21 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
 int	check_flag(char **args)
 {

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:49:14 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/18 20:37:54 by afenzl           ###   ########.fr       */
+/*   Created: 2022/08/03 17:15:05 by afenzl            #+#    #+#             */
+/*   Updated: 2022/08/24 21:21:24 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	builtin_env(void)
 {
-	char	**environ;
+	int	i;
 
-	(void)argv;
-	if (argc < 0)
-		printf("error\n");
-	environ = ft_splitdup(env);
-	system("leaks a.out");
-	return (0);
+	if (g_global.env == NULL)
+		return (1);
+	i = 0;
+	while (g_global.env && g_global.env[i] != NULL)
+	{
+		if (ft_strchr(g_global.env[i], '=') != NULL)
+			ft_printf("%s\n", g_global.env[i]);
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }
