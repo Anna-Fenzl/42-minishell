@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:35:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 18:27:20 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 19:36:54 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/*
+	waits for the children to terminate
+	and sets last exit to the exitstatus
+*/
 void	handle_waiting(void)
 {
 	int	ret_from_child;
@@ -36,8 +40,7 @@ void	redir_and_exec(int tmpin, int tmpout, int i, int *fd)
 	exit(1);
 }
 
-// fork error return needs to be passed somehow
-void	handle_multiple_cmd(int *tmpin, int *tmpout, int i, int *fd)
+int	handle_pipes(int *tmpin, int *tmpout, int i, int *fd)
 {
 	int	id;
 
@@ -47,8 +50,8 @@ void	handle_multiple_cmd(int *tmpin, int *tmpout, int i, int *fd)
 	id = fork();
 	if (id < 0)
 	{
-		printf("could not fork\n");
-		return ;
+		printf("Error: could not fork\n");
+		return (1);
 	}
 	if (id == 0)
 	{
@@ -59,40 +62,51 @@ void	handle_multiple_cmd(int *tmpin, int *tmpout, int i, int *fd)
 	if (i > 0)
 		close(*tmpin);
 	*tmpin = fd[0];
+	return (0);
 }
 
-// -->in child: is this neccessary??
-// if (g_global.child[i].cmd == NULL)
-// 	exit(0);
-int	execute(void)
+int	handle_subshells(int tmpin, int tmpout)
 {
-	int		tmpin;
-	int		tmpout;
-	int		fd[2];
-	int		i;
-	int		ret;
+	int	i;
+	int	fd[2];
 
 	i = 0;
-	tmpin = dup(STDIN_FILENO);
-	tmpout = dup(STDOUT_FILENO);
-	if (g_global.children_num == 1)
-	{
-		ret = exec_builtin(g_global.child[i].cmd);
-		if (ret != -1)
-			return (ret);
-	}
 	while (i < g_global.children_num)
 	{
 		if (pipe(fd) == -1)
 		{
-			printf("could not pipe\n");
+			printf("Error: could not pipe\n");
 			return (1);
 		}
-		handle_multiple_cmd(&tmpin, &tmpout, i, fd);
+		if (handle_pipes(&tmpin, &tmpout, i, fd) == 1)
+			return (1);
 		i++;
 	}
+	return (0);
+}
+
+/*
+	in case there only a single builtin
+	its gonna execute that one in the parent
+	else its gonna create subshells
+*/
+int	execute(void)
+{
+	int	tmpin;
+	int	tmpout;
+	int	ret;
+
+	tmpin = dup(STDIN_FILENO);
+	tmpout = dup(STDOUT_FILENO);
+	if (g_global.children_num == 1)
+	{
+		ret = handle_single_builtin(tmpout);
+		if (ret != -1)
+			return (ret);
+	}
+	ret = handle_subshells(tmpin, tmpout);
 	handle_waiting();
 	close(tmpin);
 	close(tmpout);
-	return (0);
+	return (ret);
 }

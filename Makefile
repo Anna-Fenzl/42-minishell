@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/24 16:39:19 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/24 18:59:38 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCEXEC =	main.c env.c utils.c debug.c\
 		./executor/built_in/cd.c ./executor/built_in/echo.c ./executor/built_in/env.c \
 		./executor/built_in/exit.c ./executor/built_in/export.c ./executor/built_in/pwd.c \
 		./executor/built_in/unset.c ./executor/built_in/utils.c \
-		./executor/child/exec.c ./executor/child/get_path.c ./executor/child/handle_builtin.c	\
+		./executor/child/execute.c ./executor/child/get_path.c ./executor/child/builtin.c	\
 		./executor/child/redir.c
 
 SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c ./parser/delete_quotes.c \
