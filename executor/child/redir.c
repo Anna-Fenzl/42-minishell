@@ -6,11 +6,25 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:37:34 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 16:38:08 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 18:23:07 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+void	trunc_or_append(int *fd, int i, int mode)
+{
+	if (mode == 1)
+	{
+		*fd = open(g_global.child[i].outfile,
+				O_CREAT | O_WRONLY | O_APPEND,
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	}
+	else
+		*fd = open(g_global.child[i].outfile,
+				O_CREAT | O_WRONLY | O_TRUNC,
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+}
 
 void	redir_infile(int i, int tmpin, int *fd)
 {
@@ -38,16 +52,9 @@ void	redir_outfile(int i, int tmpout, int *fd)
 	if (g_global.child[i].outfile != NULL)
 	{
 		close(fd[1]);
-		if (g_global.child[i].append == 1)
-		{
-			fd[1] = open(g_global.child[i].outfile,
-					O_CREAT | O_WRONLY | O_APPEND,
-					S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-		}
-		else
-			fd[1] = open(g_global.child[i].outfile,
-					O_CREAT | O_WRONLY | O_TRUNC,
-					S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+		printf("fd is %i\n", fd[1]);
+		trunc_or_append(&(fd[1]), i, g_global.child[i].append);
+		printf("fd is %i\n", fd[1]);
 		if (fd[1] < 0)
 		{
 			ft_putstr_fd("could not write to outfile\n", STDERR_FILENO);

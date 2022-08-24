@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 19:15:10 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/24 15:54:40 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/24 18:23:47 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ to fix
 
 to do
 -->appending doesnt work --> DONE
+--> figure out why exit code 255 -->DONE
 --> the redirout in single builtins
---> figure out why exit code 255
 -->signals inside children
 
 LAST PUSH

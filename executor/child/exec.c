@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:35:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 17:59:46 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/24 18:27:20 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ void	redir_and_exec(int tmpin, int tmpout, int i, int *fd)
 
 	redir_infile(i, tmpin, fd);
 	redir_outfile(i, tmpout, fd);
+	exit_builtin(i);
 	path = ft_get_path(g_global.child[i].cmd[0]);
 	execve(path, g_global.child[i].cmd, g_global.env);
 	ft_putstr_fd("minishell: failed: command not found\n", 2);
 	exit(1);
 }
 
+// fork error return needs to be passed somehow
 void	handle_multiple_cmd(int *tmpin, int *tmpout, int i, int *fd)
 {
 	int	id;
@@ -50,7 +52,6 @@ void	handle_multiple_cmd(int *tmpin, int *tmpout, int i, int *fd)
 	}
 	if (id == 0)
 	{
-		printf("HELLO FROM CHILD %i\n", i);
 		close(fd[0]);
 		redir_and_exec(*tmpin, *tmpout, i, fd);
 	}
@@ -60,7 +61,6 @@ void	handle_multiple_cmd(int *tmpin, int *tmpout, int i, int *fd)
 	*tmpin = fd[0];
 }
 
-// void	handle_muliple_cmd(int tmpin, int tmpout, int i, int *fd)
 // -->in child: is this neccessary??
 // if (g_global.child[i].cmd == NULL)
 // 	exit(0);
@@ -77,7 +77,7 @@ int	execute(void)
 	tmpout = dup(STDOUT_FILENO);
 	if (g_global.children_num == 1)
 	{
-		ret = check_exec_builtin(g_global.child[i].cmd);
+		ret = exec_builtin(g_global.child[i].cmd);
 		if (ret != -1)
 			return (ret);
 	}
