@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:06:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 19:40:57 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 12:08:06 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		exec_builtin(char **cmd);
 void	exit_builtin(int i);
 void	redir_infile(int i, int tmpin, int *fd);
 void	redir_outfile(int i, int tmpout, int *fd);
-void	trunc_or_append(int *fd, int i);
 
 // builtins
 int		builtin_cd(char ***env, char **path);

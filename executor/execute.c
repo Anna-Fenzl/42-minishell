@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:35:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 22:06:02 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 11:39:04 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ int	execute(void)
 	{
 		ret = handle_single_builtin(tmpout);
 		if (ret != -1)
+		{
+			close(tmpin);
+			close(tmpout);
 			return (ret);
+		}
 	}
 	ret = handle_subshells(tmpin, tmpout);
 	handle_waiting();

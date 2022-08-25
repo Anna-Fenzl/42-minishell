@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:47:01 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 21:27:25 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 11:38:36 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,11 @@ int	handle_single_builtin(int tmpout)
 	int	fd;
 	int	ret;
 
-	printf("-----------SINGLE BUILTIN--------------\n");
 	if (check_if_builtin(g_global.child[0].cmd) == 1)
 	{
 		if (g_global.child[0].outfile != NULL)
 		{
-			trunc_or_append(&fd, 0);
+			trunc_or_append(&fd, 0, g_global.child[0].outfile);
 			if (fd < 0)
 			{
 				printf("Error: could not write to outfile\n");
@@ -99,7 +98,8 @@ int	handle_single_builtin(int tmpout)
 			close(fd);
 		}
 		ret = exec_builtin(g_global.child[0].cmd);
-		dup2(tmpout, STDOUT_FILENO);
+		if (g_global.child[0].outfile != NULL)
+			dup2(tmpout, STDOUT_FILENO);
 		return (ret);
 	}
 	return (-1);

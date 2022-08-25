@@ -6,25 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:37:34 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 21:27:35 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 11:12:53 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-void	trunc_or_append(int *fd, int i)
-{
-	if (g_global.child[i].append == 1)
-	{
-		*fd = open(g_global.child[i].outfile,
-				O_CREAT | O_WRONLY | O_APPEND,
-				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	}
-	else
-		*fd = open(g_global.child[i].outfile,
-				O_CREAT | O_WRONLY | O_TRUNC,
-				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-}
 
 void	redir_infile(int i, int tmpin, int *fd)
 {
@@ -53,7 +39,7 @@ void	redir_outfile(int i, int tmpout, int *fd)
 	{
 		close(fd[1]);
 		printf("fd is %i\n", fd[1]);
-		trunc_or_append(&(fd[1]), i);
+		trunc_or_append(&(fd[1]), i, g_global.child[i].outfile);
 		printf("fd is %i\n", fd[1]);
 		if (fd[1] < 0)
 		{

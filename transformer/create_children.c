@@ -6,25 +6,22 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 15:18:00 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 12:07:59 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	open_outfiles(char *outfile, int this_pipe)
+void	trunc_or_append(int *fd, int this_pipe, char *outfile)
 {
-	int	fd;
-
 	if (g_global.child[this_pipe].append == 1)
 	{
-		fd = open(outfile, O_CREAT | O_WRONLY | O_APPEND,
+		*fd = open(outfile, O_CREAT | O_WRONLY | O_APPEND,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	}
 	else
-		fd = open(outfile, O_CREAT | O_WRONLY | O_TRUNC,
+		*fd = open(outfile, O_CREAT | O_WRONLY | O_TRUNC,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	return (fd);
 }
 
 int	handle_outfile(t_list *cur, int this_pipe)
@@ -35,7 +32,7 @@ int	handle_outfile(t_list *cur, int this_pipe)
 		|| ((t_elem *)cur->content)->type == T_REDIR1)
 	{
 		cur = cur->next;
-		fd = open_outfiles(((t_elem *)cur->content)->str, this_pipe);
+		trunc_or_append(&fd, this_pipe, ((t_elem *)cur->content)->str);
 		if (fd < 0)
 		{
 			printf("minishell: %s: Permission denied\n",
