@@ -12,10 +12,12 @@ PARSING:
 EXEC:
 --> signals
 --> check leaks && valgrind
---> test it
+--> test it (theres a tester now)
 
 LAST PUSH
 
+--> empty strings as input --> DONE
+--> fixed return values --> DONE
 --> check if all fds are closed --> DONE
 --> appending doesnt work --> DONE
 --> figure out why exit code 255 -->DONE

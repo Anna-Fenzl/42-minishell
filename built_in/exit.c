@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 21:21:29 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 15:49:12 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	ft_error(char *str)
 {
-	printf("minishell: exit: %s numeric argument required\n", str);
+	if (str != NULL)
+		ft_putstr_fd("minishell: exit: numeric argument required\n", 2);
 	exit (255);
 }
 
@@ -46,6 +47,8 @@ long long	atoll_check(char *str)
 	res = 0;
 	n = 1;
 	p = (char *)str;
+	if (p[0] == '\0')
+		ft_error(p);
 	if (p[i] == '-' || p[i] == '+')
 	{
 		if (p[i + 1] == '\0')
@@ -67,12 +70,13 @@ int	builtin_exit(char **arg)
 {
 	long	exitcode;
 
-	printf("exit\n");
+	exitcode = g_global.error_code;
+	ft_putstr_fd("exit\n", 2);
 	if (arg[1] != NULL)
 		exitcode = atoll_check(arg[1]);
 	if (ft_splitlen(arg) > 2)
 	{
-		printf("minishell: exit: too many arguments\n");
+		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		return (EXIT_FAILURE);
 	}
 	exit(exitcode % 256);

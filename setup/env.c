@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:23:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 21:31:13 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:55:40 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	shlvl_edgecases(char **env, int lvl)
 	if (lvl == 0 || lvl >= 1000)
 	{
 		if (lvl >= 1000)
-			printf("minishell: warning: shell level (%i)to high"
-				", resetting to 1\n", lvl);
+			ft_putstr_fd("minishell: warning: shell level (>1000)to high"
+				", resetting to 1\n", 2);
 		handle_export(&env, "SHLVL=1");
 		return (1);
 	}

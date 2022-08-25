@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:00 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 21:21:01 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:47:44 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	to_home_dir(char ***env)
 	}
 	else
 	{
-		printf("minishell: cd: HOME not set\n");
+		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 		return (1);
 	}
 	return (0);
@@ -106,7 +106,6 @@ int	builtin_cd(char ***env, char **path)
 {
 	if (path == NULL)
 		return (1);
-	printf("path in cd is %s\n", path[1]);
 	if (path[1] == NULL)
 	{
 		if (to_home_dir(env) == 1)
@@ -116,7 +115,7 @@ int	builtin_cd(char ***env, char **path)
 	{
 		if (chdir(path[1]) < 0)
 		{
-			printf("minishell: cd: No such file or directory");
+			ft_putstr_fd("minishell: cd: No such file or directory\n", 2);
 			return (EXIT_FAILURE);
 		}
 		change_pwd(env);

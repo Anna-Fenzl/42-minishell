@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:35:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 11:39:04 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 16:32:02 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	handle_waiting(void)
 		continue ;
 	if (WIFEXITED(ret_from_child))
 		g_global.error_code = WEXITSTATUS(ret_from_child);
-	printf("error code is %d\n", g_global.error_code);
+	// printf("error code is %d\n", g_global.error_code);
 }
 
 void	redir_and_exec(int tmpin, int tmpout, int i, int *fd)
@@ -34,10 +34,13 @@ void	redir_and_exec(int tmpin, int tmpout, int i, int *fd)
 	redir_infile(i, tmpin, fd);
 	redir_outfile(i, tmpout, fd);
 	exit_builtin(i);
-	path = ft_get_path(g_global.child[i].cmd[0]);
+	if (g_global.child[i].cmd[0] == NULL)
+		path = NULL;
+	else
+		path = ft_get_path(g_global.child[i].cmd[0]);
 	execve(path, g_global.child[i].cmd, g_global.env);
 	ft_putstr_fd("minishell: failed: command not found\n", 2);
-	exit(1);
+	exit(127);
 }
 
 /*
@@ -61,7 +64,7 @@ int	handle_pipes(int *tmpin, int *tmpout, int i, int *fd)
 	id = fork();
 	if (id < 0)
 	{
-		printf("Error: could not fork\n");
+		ft_putstr_fd("Error: could not fork\n", 2);
 		return (1);
 	}
 	if (id == 0)
@@ -87,7 +90,7 @@ int	handle_subshells(int tmpin, int tmpout)
 	{
 		if (pipe(fd) == -1)
 		{
-			printf("Error: could not pipe\n");
+			ft_putstr_fd("Error: could not pipe\n", 2);
 			return (1);
 		}
 		if (handle_pipes(&tmpin, &tmpout, i, fd) == 1)
@@ -115,6 +118,7 @@ int	execute(void)
 		ret = handle_single_builtin(tmpout);
 		if (ret != -1)
 		{
+			g_global.error_code = ret;
 			close(tmpin);
 			close(tmpout);
 			return (ret);

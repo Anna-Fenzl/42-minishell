@@ -111,7 +111,8 @@ test_from_file() {
 				((line_count++))
 			done
 			# INPUT=${INPUT%?}
-			echo -n "$INPUT" | valgrind --tool=memcheck --leak-check=full -v $MINISHELL_PATH/$EXECUTABLE 2>>tmp_err_minishell >tmp_out_minishell
+			# echo -n "$INPUT" | valgrind --tool=memcheck --leak-check=full -v $MINISHELL_PATH/$EXECUTABLE 2>>tmp_err_minishell >tmp_out_minishell
+			echo -n "$INPUT" | $MINISHELL_PATH/$EXECUTABLE 2>tmp_err_minishell >tmp_out_minishell
 			exit_minishell=$?
 			echo -n "enable -n .$NL$INPUT" | bash 2>tmp_err_bash >tmp_out_bash
 			exit_bash=$?

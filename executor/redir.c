@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:37:34 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 11:12:53 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:58:19 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ void	redir_outfile(int i, int tmpout, int *fd)
 	if (g_global.child[i].outfile != NULL)
 	{
 		close(fd[1]);
-		printf("fd is %i\n", fd[1]);
 		trunc_or_append(&(fd[1]), i, g_global.child[i].outfile);
-		printf("fd is %i\n", fd[1]);
 		if (fd[1] < 0)
 		{
 			ft_putstr_fd("could not write to outfile\n", STDERR_FILENO);

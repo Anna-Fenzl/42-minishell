@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:47:01 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 11:38:36 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:22:47 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	handle_single_builtin(int tmpout)
 			trunc_or_append(&fd, 0, g_global.child[0].outfile);
 			if (fd < 0)
 			{
-				printf("Error: could not write to outfile\n");
+				ft_putstr_fd("Error: could not write to outfile\n", fd);
 				return (1);
 			}
 			dup2(fd, STDOUT_FILENO);

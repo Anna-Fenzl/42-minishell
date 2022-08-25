@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:49:14 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 21:21:37 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:41:59 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int	main(int argc, char **argv, char **env)
 	if (argc < 0)
 		printf("error\n");
 	environ = ft_splitdup(env);
-	system("leaks a.out");
 	return (0);
 }
