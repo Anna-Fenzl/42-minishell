@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 17:08:21 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 17:50:45 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ t_global	g_global;
 // handle_free(g_global.buf, lexer);
 void	minishell(void)
 {
-	t_list	*lexer;
-
 	while (1)
 	{
 		// handle_signals();
-		lexer = ft_lstnew(NULL);
+		g_global.lexer = ft_lstnew(NULL);
 		if (isatty(0))
 			g_global.buf = readline("minishell> ");
 		else
@@ -33,16 +31,16 @@ void	minishell(void)
 		if (g_global.buf == NULL)
 			exit(g_global.error_code);
 		handle_history(g_global.buf);
-		if (parse(g_global.buf, &lexer))
+		if (parse(g_global.buf, &g_global.lexer))
 		{
-			if (transform(lexer) == 0)
+			if (transform(g_global.lexer) == 0)
 				execute();
 			// printf("exit code %d\n", g_global.error_code);
 			unlink(".ms_tmp");
 		}
 		else
 			g_global.error_code = 2;
-		handle_free(g_global.buf, lexer);
+		handle_free(g_global.buf, g_global.lexer, g_global.child);
 	}
 }
 

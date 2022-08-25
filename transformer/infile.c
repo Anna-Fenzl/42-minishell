@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:11:48 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 16:20:51 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:07:16 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	handle_here_dock(t_list *cur, int this_pipe)
 	char	*input;
 
 	cur = cur->next;
-	delim = ft_strjoin(((t_elem *)cur->content)->str, "\n");
 	fd = open(".ms_tmp", O_CREAT | O_WRONLY | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd < 0)
 		return (1);
 	write(1, "here_doc> ", 10);
+	delim = ft_strjoin(((t_elem *)cur->content)->str, "\n");
 	input = get_next_line(STDIN_FILENO);
 	while (input != NULL && ft_strncmp(input, delim, ft_strlen(input) + 1) != 0)
 	{
@@ -44,6 +44,9 @@ int	handle_here_dock(t_list *cur, int this_pipe)
 		input = get_next_line(STDIN_FILENO);
 	}
 	free(input);
+	free(delim);
+	if (g_global.child[this_pipe].infile != NULL)
+		free(g_global.child[this_pipe].infile);
 	g_global.child[this_pipe].infile = ft_strdup(".ms_tmp");
 	return (0);
 }
@@ -67,6 +70,8 @@ int	handle_infile(t_list *cur, int this_pipe)
 		return (1);
 	}
 	close(fd);
+	if (g_global.child[this_pipe].infile != NULL)
+		free(g_global.child[this_pipe].infile);
 	g_global.child[this_pipe].infile = ft_strdup(((t_elem *)cur->content)->str);
 	return (0);
 }

@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_new_split.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 09:28:48 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/23 09:29:13 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:36:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strdupn(char *s, int n)
-{
-	char	*str;
-	int		i;
+// char	*ft_strdupn(char *s, int n)
+// {
+// 	char	*str;
+// 	int		i;
 
-	str = malloc(sizeof(char) * (n + 1));
-	i = 0;
-	while (i < n)
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
+// 	str = malloc(sizeof(char) * (n + 1));
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		str[i] = s[i];
+// 		i++;
+// 	}
+// 	str[i] = '\0';
+// 	return (str);
+// }
 
 int	count_new_words(char *s)
 {

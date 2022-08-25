@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 17:24:49 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/25 20:46:45 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	handle_outfile(t_list *cur, int this_pipe)
 			return (1);
 		}
 		close(fd);
+		if (g_global.child[this_pipe].outfile != NULL)
+			free(g_global.child[this_pipe].outfile);
 		g_global.child[this_pipe].outfile = ft_strdup
 			(((t_elem *)cur->content)->str);
 	}

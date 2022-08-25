@@ -13,7 +13,7 @@ PARSING:
 EXEC:
 --> signals
 --> STD_ERR in exit
---> execute it even if you cant open infile(more than one cmd)
+--> execute it even if you cant open invalgrfile(more than one cmd)
 	"<dklj ls | ls"
 --> check leaks && valgrind
 --> test it (theres a tester now)
