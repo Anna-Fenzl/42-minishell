@@ -64,11 +64,11 @@ echo $?
 42 42
 echo $?
 
-/bin/echo 42
-expr $? + $?
+# /bin/echo 42
+# expr $? + $?
 
-/bin/cat 42
-expr $? + $?
+# /bin/cat 42
+# expr $? + $?
 
 echo "Hello World"
 

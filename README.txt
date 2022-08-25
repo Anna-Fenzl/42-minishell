@@ -8,40 +8,21 @@ PARSING:
 --> fix expansion
 --> using only neccassary tokens
 --> norminette
+--> "| test" is not seen as a syntax error
 
 EXEC:
 --> signals
+--> STD_ERR in exit
+--> execute it even if you cant open infile(more than one cmd)
+	"<dklj ls | ls"
 --> check leaks && valgrind
 --> test it (theres a tester now)
 
 LAST PUSH
 
---> empty strings as input --> DONE
---> fixed return values --> DONE
---> check if all fds are closed --> DONE
---> appending doesnt work --> DONE
---> figure out why exit code 255 -->DONE
---> the redirout in single builtins --> DONE
-
 
 TESTING
 
-wrote down what isnt same
-	BASH											MINISHELL
---> "echo $SHLVL"
-	2												=/Users/afenzl/Documents/projects/minishell
---> echo $"$"
-	$												$$
---> env | clear | env cat -e >out
-	^[[H^[[2J										the enviroment
-	(dont get it)
---> echo "$_="
-	_==												$_=
---> echo $"_="
-	$_=												_=
---> echo $_ (the last executed command)
-	env												$_
-	ls..
 	>>rn the value of '_' is _=/usr/bin/env on default
 	since you mostly check it over env --> last executed cmd is env
 	but if you check it witch echo $_ its gonna show the last cmd
