@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 14:45:06 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 17:21:49 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	minishell(void)
 {
 	while (1)
 	{
-		// handle_signals();
+		handle_signals();
 		g_global.lexer = ft_lstnew(NULL);
 		if (isatty(0))
 			g_global.buf = readline("minishell> ");
@@ -35,7 +35,6 @@ void	minishell(void)
 		{
 			if (transform(g_global.lexer) == 0)
 				execute();
-			// printf("exit code %d\n", g_global.error_code);
 			unlink(".ms_tmp");
 			free_child(g_global.child);
 		}

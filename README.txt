@@ -13,19 +13,22 @@ PARSING:
 EXEC:
 --> signals
 --> STD_ERR in exit
---> execute it even if you cant open invalgrfile(more than one cmd)
-	"<dklj ls | ls"
---> test it (theres a tester now)
 
 LAST PUSH
+--> test it (theres a tester now)
+--> removed opening infile in transform
+--> fixed exitcode with broken pipes
+--> redid the pipes
 --> check leaks && valgrind
 
-
 TESTING
+	run the tester with ./tester.sh m
+	valgrind with					v
 
-	>>rn the value of '_' is _=/usr/bin/env on default
-	since you mostly check it over env --> last executed cmd is env
-	but if you check it witch echo $_ its gonna show the last cmd
+	current test results:
+	STD_OUT: 66  STD_ERR: 19  EXIT_CODE: 2
+	min possible errors:
+	STD_OUT: 262  STD_ERR: 275  EXIT_CODE: 385 
 _______________________________________________________________________________________
 
 the libft has some extra functions for two dimensional arrays:
@@ -37,5 +40,3 @@ the libft has some extra functions for two dimensional arrays:
 and for env 
 -> check_existence will check a split and search for a name until '\0' or '='
 	to work with env
-
-

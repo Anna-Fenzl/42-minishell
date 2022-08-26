@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:11:48 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 14:47:56 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 17:21:26 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,7 @@ int	handle_here_dock(t_list *cur, int this_pipe)
 */
 int	handle_infile(t_list *cur, int this_pipe)
 {
-	// int	fd;
-
 	cur = cur->next;
-	// fd = open(((t_elem *)cur->content)->str, O_RDONLY);
-	// if (fd < 0)
-	// {
-	// 	if (access(((t_elem *)cur->content)->str, F_OK) < 0)
-	// 		ft_putstr_fd("minishell: No such file or directory\n", 2);
-	// 	else
-	// 		ft_putstr_fd("minishell: Permission denied\n", 2);
-	// 	g_global.error_code = 1;
-	// 	return (1);
-	// }
-	// close(fd);
 	if (g_global.child[this_pipe].infile != NULL)
 		free(g_global.child[this_pipe].infile);
 	g_global.child[this_pipe].infile = ft_strdup(((t_elem *)cur->content)->str);

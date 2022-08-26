@@ -25,7 +25,7 @@ main() {
 	fi
 	if [[ $1 == "m" ]] ; then
 		test_mandatory
-	elif [[ $1 == "b" ]] ; then
+	elif [[ $1 == "v" ]] ; then
 		test_mandatory_valgrind
 	elif [[ $1 == "b" ]] ; then
 		test_bonus

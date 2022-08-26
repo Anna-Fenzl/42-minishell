@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/24 21:31:00 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/26 17:13:50 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ SRCBUILT =	./built_in/cd.c ./built_in/echo.c ./built_in/env.c \
 		./built_in/exit.c ./built_in/export.c ./built_in/pwd.c \
 		./built_in/unset.c ./built_in/utils.c \
 
-SRCEXEC =	./executor/execute.c ./executor/get_path.c \
-			./executor/builtin.c ./executor/redir.c
+SRCEXEC =	./executor/execute.c ./executor/get_path.c ./executor/builtin.c \
+			./executor/redir.c ./executor/utils.c
 
 
 LIBS = ./libft/libs.a

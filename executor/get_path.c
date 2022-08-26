@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 12:02:32 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 20:38:41 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 17:20:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,28 @@ char	**get_possible_paths(char **env)
 	return (split);
 }
 
+char	*check_access(char **split, char *cmd)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	tmp = NULL;
+	while (split != NULL && split[i] != NULL && cmd != NULL)
+	{
+		split[i] = ft_strjoin2(split[i], ft_strdup("/"));
+		split[i] = ft_strjoin2(split[i], ft_strdup(cmd));
+		if (access(split[i], F_OK) == 0)
+		{
+			tmp = ft_strdup(split[i]);
+			ft_free2(split);
+			return (tmp);
+		}
+		i++;
+	}
+	return (tmp);
+}
+
 //  && access(cmd, 0) == 0
 char	*ft_get_path(char *cmd)
 {
@@ -85,19 +107,10 @@ char	*ft_get_path(char *cmd)
 		return (NULL);
 	}
 	split = get_possible_paths(g_global.env);
-	while (split != NULL && split[i] != NULL && cmd != NULL)
-	{
-		split[i] = ft_strjoin2(split[i], ft_strdup("/"));
-		split[i] = ft_strjoin2(split[i], ft_strdup(cmd));
-		if (access(split[i], F_OK) == 0)
-		{
-			tmp = ft_strdup(split[i]);
-			ft_free2(split);
-			return (tmp);
-		}
-		i++;
-	}
+	tmp = check_access(split, cmd);
+	if (tmp != NULL)
+		return (tmp);
 	if (split != NULL)
 		ft_free2(split);
-	return (NULL);
+	return (ft_strjoin("./", cmd));
 }

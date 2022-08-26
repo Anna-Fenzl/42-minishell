@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 17:51:47 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 14:50:28 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static void	ft_error(char *str)
 {
 	if (str != NULL)
 		ft_putstr_fd("minishell: exit: numeric argument required\n", 2);
-	handle_free(g_global.buf, g_global.lexer, g_global.child);
+	handle_free(g_global.buf, g_global.lexer);
+	free_child(g_global.child);
 	exit (255);
 }
 
@@ -80,6 +81,7 @@ int	builtin_exit(char **arg)
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		return (EXIT_FAILURE);
 	}
-	handle_free(g_global.buf, g_global.lexer, g_global.child);
+	handle_free(g_global.buf, g_global.lexer);
+	free_child(g_global.child);
 	exit(exitcode % 256);
 }

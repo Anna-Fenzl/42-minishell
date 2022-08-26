@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 20:46:45 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 17:21:09 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,5 @@ int	create_children(t_list **lexer)
 			return (1);
 		cur = cur->next;
 	}
-	// debug_print_children();
 	return (0);
 }
