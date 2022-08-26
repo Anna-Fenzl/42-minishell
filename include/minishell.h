@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 17:49:58 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 14:45:49 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	debug_print_children(void);
 void	set_default_env(char **env);
 void	handle_signals(void);
 void	handle_history(char *line);
-void	handle_free(char *line, t_list *lexer, t_child *child);
+void	handle_free(char *line, t_list *lexer);
+void	free_child(t_child *child);
 
 extern t_global	g_global;
 

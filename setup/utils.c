@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 19:11:55 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 17:52:50 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 14:45:34 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ void	free_child(t_child *child)
 	free(child);
 }
 
-void	handle_free(char *line, t_list *lexer, t_child *child)
+void	handle_free(char *line, t_list *lexer)
 {
 	free(line);
 	free_lexer(lexer);
-	free_child(child);
 }
