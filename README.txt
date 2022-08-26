@@ -7,12 +7,13 @@ PARSING:
 --> implement ?$
 --> fix expansion
 --> using only neccassary tokens
---> "| test" is not seen as a syntax error
+--> "| test" is not seen as a syntax error -->DONE
 --> norminette
 --> valgrind
 
 EXEC:
 --> STD_ERR in exit
+--> remove spaces echo
 
 LAST PUSH
 --> signals

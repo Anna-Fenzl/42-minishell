@@ -6,27 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 09:28:48 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/25 17:36:35 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 21:23:00 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-
-// char	*ft_strdupn(char *s, int n)
-// {
-// 	char	*str;
-// 	int		i;
-
-// 	str = malloc(sizeof(char) * (n + 1));
-// 	i = 0;
-// 	while (i < n)
-// 	{
-// 		str[i] = s[i];
-// 		i++;
-// 	}
-// 	str[i] = '\0';
-// 	return (str);
-// }
 
 int	count_new_words(char *s)
 {
@@ -40,7 +24,7 @@ int	count_new_words(char *s)
 		if (s[i] == '$' && s[i])
 		{
 			i++;
-			while (ft_isalnum(s[i]) && s[i])
+			while ((ft_isalnum(s[i]) || s[i] == '?' || s[i] == '_') && s[i])
 				i++;
 			words++;
 		}
@@ -64,7 +48,7 @@ char	**new_split_process(char *s, char **str, int i, int k)
 		if (s[i] == '$' && s[i])
 		{
 			i++;
-			while (ft_isalnum(s[i]) && s[i])
+			while ((ft_isalnum(s[i]) || s[i] == '?' || s[i] == '_') && s[i])
 				i++;
 			str[k] = ft_strdupn(&s[j], i - j);
 			k++;
@@ -81,16 +65,20 @@ char	**new_split_process(char *s, char **str, int i, int k)
 	return (str);
 }
 
+/*
+	gets a string a splits at '$'
+*/
 char	**ft_new_split(char *s)
 {
 	int		i;
-	int		k;
-	char	**str;
+	int		j;
+	char	**split;
 
 	i = 0;
-	k = 0;
-	str = malloc(sizeof (char *) * (count_new_words(s) + 1));
-	if (!str)
+	j = 0;
+	split = malloc(sizeof (char *) * (count_new_words(s) + 1));
+	if (!split)
 		return (NULL);
-	return (new_split_process(s, str, i, k));
+	split = new_split_process(s, split, i, j);
+	return (split);
 }

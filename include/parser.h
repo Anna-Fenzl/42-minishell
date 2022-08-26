@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/22 19:21:48 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 21:57:45 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ char	**split_cmd_table(char *s);
 
 void	in_env(char **split, int i, int len);
 void	not_in_env(char **split, int i, int len);
-char	**replace_var(char *s);
+char	**replace_var(char **split_q, int index);
 
 // error
 int		err(char *msg);
-int		has_error(t_elem *this, t_elem *next);
-int		check_error(t_list *lexer);
-int		syntax_error(t_list *lexer);
+int		syntax_error_fd_pipe(t_elem *this, t_elem *next);
+int		syntax_error_end(t_list *lexer);
+int		check_syntax_error(t_list *lexer);
 
 // free
 void	free_str(t_list **lexer);

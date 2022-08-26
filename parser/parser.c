@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/22 15:08:50 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 21:45:38 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	replace_var_in_q(char **split_q)
 	{
 		if (split_q[i][0] != '\'')//change singl quotes to double quotes
 		{
-			split_env = replace_var(split_q[i]);
+			split_env = replace_var(split_q, i);
 			free(split_q[i]);
 			tmp = rejoin_the_split(split_env);
 			split_q[i] = ft_strtrim(tmp, "\"");
@@ -173,7 +173,7 @@ int	parse(char *buf, t_list **lexer)
 		if (!check_tokens(*lexer))
 		{
 			parse_lexer(*lexer);
-			if (!check_error(*lexer) || syntax_error(*lexer))
+			if (!check_syntax_error(*lexer) || syntax_error_end(*lexer))
 				return (0);
 			which_pipe(*lexer);
 			is_option(*lexer);
