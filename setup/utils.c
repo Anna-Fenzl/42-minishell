@@ -6,24 +6,35 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 19:11:55 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 14:45:34 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 19:23:51 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+static void	set_newline(int signo)
+{
+	if (signo == SIGINT)
+		write(1, "\nminishell> ", 12);
+}
+
 /*
 	IN INTERACTIVE MODE:
 
 	ctrl '\' (SIGQUIT) is ignored
-	--> but in Children it must be set back to default!
-	ctrl 'C' (SIGINT) is also ignored
-	ctrl 'D' should handle ctrl -C
+	ctrl 'C' (SIGINT) is displays a new line
 */
 void	handle_signals(void)
 {
+	struct sigaction	sig;
+	struct termios		term;
+
+	tcgetattr(0, &term);
+	term.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+	sig.sa_handler = set_newline;
+	sigaction(SIGINT, &sig, NULL);
 	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, SIG_IGN);
 }
 
 void	handle_history(char *line)

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:12:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 17:14:16 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 19:25:09 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 void	set_signals(void)
 {
 	signal(SIGQUIT, SIG_DFL);
+	signal(SIGINT, SIG_DFL);
 }
 
 void	assign_prev(int *fd, int *fd_prev)

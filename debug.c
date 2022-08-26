@@ -6,14 +6,12 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:15:07 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/24 20:12:17 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/26 17:56:24 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
 
-// if (((t_elem *)lexer->content) != NULL)
-// {
 void	print_lexer(t_list *lexer)
 {
 	while (lexer != NULL)
