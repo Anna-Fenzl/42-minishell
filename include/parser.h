@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 19:08:33 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 19:16:46 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ char	**replace_var(char **split_q, int index);
 // error
 // int		err(char *msg);
 // int		syntax_error_fd_pipe(t_elem *this, t_elem *next);
-int		syntax_error_end(t_list *lexer);
+// int		syntax_error_end(t_list *lexer);
+
+// check syntax
 int		check_syntax_error(t_list *lexer);
 
 // free
