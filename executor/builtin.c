@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:47:01 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/27 14:16:22 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 18:57:56 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,21 @@
 */
 int	exec_builtin(char **cmd)
 {
-	int	len;
-
 	if (cmd == NULL || cmd[0] == NULL)
 		return (-1);
-	len = ft_strlen(cmd[0]);
-	if (ft_strncmp(cmd[0], "cd", len) == 0)
+	if (ft_strncmp(cmd[0], "cd", 3) == 0)
 		return (builtin_cd(&g_global.env, cmd));
-	else if (ft_strncmp(cmd[0], "echo", len) == 0)
+	else if (ft_strncmp(cmd[0], "echo", 5) == 0)
 		return (builtin_echo(cmd));
-	else if (ft_strncmp(cmd[0], "env", len) == 0)
+	else if (ft_strncmp(cmd[0], "env", 4) == 0)
 		return (builtin_env());
-	else if (ft_strncmp(cmd[0], "exit", len) == 0)
+	else if (ft_strncmp(cmd[0], "exit", 5) == 0)
 		return (builtin_exit(cmd));
-	else if (ft_strncmp(cmd[0], "export", len) == 0)
+	else if (ft_strncmp(cmd[0], "export", 7) == 0)
 		return (builtin_export(&g_global.env, cmd));
-	else if (ft_strncmp(cmd[0], "unset", len) == 0)
+	else if (ft_strncmp(cmd[0], "unset", 6) == 0)
 		return (builtin_unset(&g_global.env, cmd));
-	else if (ft_strncmp(cmd[0], "pwd", len) == 0)
+	else if (ft_strncmp(cmd[0], "pwd", 4) == 0)
 		return (builtin_pwd());
 	return (-1);
 }
@@ -60,18 +57,15 @@ void	exit_builtin(int i)
 */
 int	check_if_builtin(char **cmd)
 {
-	int	len;
-
 	if (cmd == NULL || cmd[0] == NULL)
 		return (0);
-	len = ft_strlen(cmd[0]);
-	if (ft_strncmp(cmd[0], "cd", len) == 0
-		|| ft_strncmp(cmd[0], "echo", len) == 0
-		|| ft_strncmp(cmd[0], "env", len) == 0
-		|| ft_strncmp(cmd[0], "exit", len) == 0
-		|| ft_strncmp(cmd[0], "export", len) == 0
-		|| ft_strncmp(cmd[0], "unset", len) == 0
-		|| ft_strncmp(cmd[0], "pwd", len) == 0)
+	if (ft_strncmp(cmd[0], "cd", 3) == 0
+		|| ft_strncmp(cmd[0], "echo", 5) == 0
+		|| ft_strncmp(cmd[0], "env", 4) == 0
+		|| ft_strncmp(cmd[0], "exit", 5) == 0
+		|| ft_strncmp(cmd[0], "export", 7) == 0
+		|| ft_strncmp(cmd[0], "unset", 6) == 0
+		|| ft_strncmp(cmd[0], "pwd", 4) == 0)
 		return (1);
 	return (0);
 }
