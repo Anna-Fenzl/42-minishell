@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/27 14:01:23 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 19:09:44 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	minishell(void)
 		if (g_global.buf == NULL)
 			exit(g_global.error_code);
 		handle_history(g_global.buf);
-		if (parse(g_global.buf, &g_global.lexer))
+		if (!parse(g_global.buf, &g_global.lexer))
 		{
 			if (transform(g_global.lexer) == 0)
 				execute();

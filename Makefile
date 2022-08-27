@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/27 13:39:15 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/27 19:05:45 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c \
 			./parser/delete_quotes.c ./parser/expand_env.c \
 			./parser/free.c ./parser/lexer.c ./parser/option.c \
 			./parser/parser.c ./parser/quotes.c ./parser/token.c \
-			./parser/error.c ./parser/new_split.c
+			./parser/syntax_error.c ./parser/new_split.c
 		
 SRCTRANS =	./transformer/transform.c ./transformer/create_children.c \
 			./transformer/infile.c

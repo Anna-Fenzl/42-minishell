@@ -1,21 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   syntax_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:31:15 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/26 20:33:05 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 19:16:01 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	err(char *msg)
+/***************
+ * NAME: syntax_error_front
+ * INPUT: list lexer this
+ * RETURN: return 1 if syntax error 0 if no syntax error
+ * DESCRIPTION: if we have at the front of the str pipe
+ * 				or only two tokens and first is not cmd
+ *
+ *
+ ****************/
+int	syntax_error_front(t_list *lexer, t_elem *this)
 {
-	write(STDERR_FILENO, msg, ft_strlen(msg));
-	return (1);
+	if (this->type == T_PIPE)
+	{
+		ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+		return (EXIT_FAILURE);
+	}
+	if (ft_lstsize(lexer) == 2)
+	{
+		if (this->type != T_CMD)
+		{
+			ft_putstr_fd("minishell : syntax error\n", 2);
+			return (EXIT_FAILURE);
+		}
+	}
+	return (EXIT_SUCCESS);
 }
 
 /***************
@@ -35,7 +56,7 @@ int	syntax_error_fd_pipe(t_elem *this, t_elem *next)
 		if (next->type != T_FD && next->type != T_DELIMITER)
 		{
 			ft_putstr_fd("minishell : syntax error\n", 2);
-			return (0);
+			return (EXIT_SUCCESS);
 		}
 	}
 	if (this->type == T_PIPE)
@@ -43,10 +64,10 @@ int	syntax_error_fd_pipe(t_elem *this, t_elem *next)
 		if (next->type == T_PIPE)
 		{
 			ft_putstr_fd("minishell : syntax error\n", 2);
-			return (0);
+			return (EXIT_FAILURE);
 		}
 	}
-	return (1);
+	return (EXIT_SUCCESS);
 }
 
 /***************
@@ -82,26 +103,17 @@ int	check_syntax_error(t_list *lexer)
 
 	current = lexer->next;
 	this = current->content;
-	if (this->type == T_PIPE)
-	{
-		ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
-		return (0);
-	}
-	if (ft_lstsize(lexer) == 2)
-	{
-		if (this->type != T_CMD)
-		{
-			ft_putstr_fd("minishell : syntax error\n", 2);
-			return (0);
-		}
-	}
+	if (syntax_error_front(lexer, this) == 1)
+		return (EXIT_FAILURE);
 	while (current->next)
 	{
 		this = current->content;
 		next = current->next->content;
-		if (!syntax_error_fd_pipe(this, next))
-			return (0);
+		if (syntax_error_fd_pipe(this, next) == 1)
+			return (EXIT_FAILURE);
 		current = current->next;
 	}
-	return (1);
+	if (syntax_error_end(lexer) == 1)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

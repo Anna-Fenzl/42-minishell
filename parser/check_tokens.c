@@ -6,11 +6,17 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:45:57 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 17:34:34 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 19:05:20 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+int	err(char *msg)
+{
+	write(STDERR_FILENO, msg, ft_strlen(msg));
+	return (1);
+}
 
 int	check_tokens1(t_elem *this)
 {
