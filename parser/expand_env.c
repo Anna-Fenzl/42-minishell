@@ -6,13 +6,13 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:47:18 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 16:39:28 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 17:43:31 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	in_env(char **split, int i, int len)
+void	in_env(char **split, int i)
 {
 	// int		j;
 	// char	**tmp;
@@ -34,8 +34,7 @@ void	in_env(char **split, int i, int len)
 	char	*str;
 	int		j;
 
-	if (len > 0)
-		j = 0;
+	j = 0;
 	line = check_existence(g_global.env, &split[i][1]);
 	if (line != -1)
 	{
@@ -92,7 +91,7 @@ char	**replace_var(char **split_q, int index)
 		len = ft_strlen(split[i]);
 		if (split[i][0] == '$' && len != 1)
 		{
-			in_env(split, i, len);
+			in_env(split, i);
 			not_in_env(split, i, len);
 		}
 		else if (split[i][0] == '$')

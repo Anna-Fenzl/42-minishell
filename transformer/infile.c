@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:11:48 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/27 17:39:26 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 17:42:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,9 @@ static int	create_tmpfile(int *fd)
 }
 
 /*
-	NEEDS TO EXPAND THE VARIABLES!!!
-	//expand or not the variables at start of while loop (I THINK SO AT LEAST)
-	
-	--> make delim to t_elem and check if quotes
-	- if yes --> dont expand them
-
 	reads from terminal until delimiter is reached
 	and writes it into tmp file called .ms_tmp
+	in case there are '$' it expands them
 */
 int	handle_here_dock(t_list *cur, int this_pipe)
 {

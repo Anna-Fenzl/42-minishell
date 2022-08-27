@@ -16,9 +16,10 @@ PARSING:
 --> "| test" is not seen as a syntax error -->DONE
 
 EXEC:
---> STD_ERR in exit
 
 LAST PUSH
+--> variable expansion in here_doc
+--> STD_ERR in exit 
 --> new_split in parser
 --> made ft_printf_fd for specific error messages
 --> signals

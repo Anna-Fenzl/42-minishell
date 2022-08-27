@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 16:39:36 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 17:43:38 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	delete_quotes(char *s, t_vec *cpt, int c);
 void	not_in_quotes(char *s, t_vec *cpt);
 char	**split_cmd_table(char *s);
 
-void	in_env(char **split, int i, int len);
+void	in_env(char **split, int i);
 void	not_in_env(char **split, int i, int len);
 char	**replace_var(char **split_q, int index);
 
