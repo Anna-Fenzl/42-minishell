@@ -6,11 +6,11 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 11:36:46 by afenzl            #+#    #+#             */
-/*   Updated: 2022/06/08 19:51:11 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 13:47:02 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "../printf.h"
 
 int	ft_types(char *save, va_list args, int i)
 {

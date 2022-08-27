@@ -6,13 +6,13 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:27:54 by afenzl            #+#    #+#             */
-/*   Updated: 2022/06/08 19:51:08 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 13:54:12 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "../printf.h"
 
-int	ft_conversions( char *save, va_list args, int i)
+static int	ft_conversions(int fd, char *save, va_list args, int i)
 {
 	int	len;
 
@@ -21,12 +21,12 @@ int	ft_conversions( char *save, va_list args, int i)
 	{
 		if (save[i] == '%')
 		{
-			len += ft_types(save, args, i);
+			len += ft_types_fd(fd, save, args, i);
 			i += 2;
 		}
 		else
 		{
-			write(1, &save[i], 1);
+			write(fd, &save[i], 1);
 			i++;
 			len++;
 		}
@@ -34,7 +34,7 @@ int	ft_conversions( char *save, va_list args, int i)
 	return (len);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf_fd(int fd, const char *str, ...)
 {
 	va_list	args;
 	char	*save;
@@ -47,7 +47,7 @@ int	ft_printf(const char *str, ...)
 	save = ft_strdup(str);
 	if (save == NULL)
 		return (0);
-	i = ft_conversions(save, args, i);
+	i = ft_conversions(fd, save, args, i);
 	va_end(args);
 	free(save);
 	return (i);

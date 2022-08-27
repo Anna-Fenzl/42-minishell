@@ -4,18 +4,19 @@ ________________________________________________________________________________
 
 TO DO
 PARSING:
---> implement ?$
 --> fix expansion
 --> using only neccassary tokens
---> "| test" is not seen as a syntax error -->DONE
 --> norminette
 --> valgrind
 
+--> implement ?$ --> DONE but edge cases with spaces
+--> "| test" is not seen as a syntax error -->DONE
+
 EXEC:
 --> STD_ERR in exit
---> remove spaces echo
 
 LAST PUSH
+--> made ft_printf_fd for specific error messages
 --> signals
 --> test it (theres a tester now)
 --> removed opening infile in transform

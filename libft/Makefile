@@ -49,7 +49,6 @@ STR =	ft_strlen.c		\
 		ft_strjoin.c 	\
 		ft_strtrim.c	\
 		ft_split.c		\
-		ft_new_split.c	\
 		ft_splitlen.c	\
 		ft_splitdup.c	\
 		ft_splitjoin.c	\
@@ -68,7 +67,8 @@ LIBFTCFILES :=	$(addprefix $(LIBFT)/free/, $(FREE))	\
 
 # PRINTF
 PRINTFCFILES := ft_printf.c ft_types.c ft_print_sciu.c ft_print_p.c ft_print_x.c
-PRINTFCFILES := $(addprefix $(PRINTF)/, $(PRINTFCFILES))
+PRINTFCFILES := $(addprefix $(PRINTF)/ft_printf/, $(PRINTFCFILES))	\
+				$(addprefix $(PRINTF)/ft_printf_fd/, $(PRINTFCFILES))
 
 # GNL
 GNLCFILES := get_next_line.c get_next_line_utils.c

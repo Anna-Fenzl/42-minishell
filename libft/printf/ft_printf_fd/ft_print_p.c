@@ -6,13 +6,13 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:30:09 by afenzl            #+#    #+#             */
-/*   Updated: 2022/06/08 19:50:59 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:00:56 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "../printf.h"
 
-char	*ft_hex_p_to_str(unsigned long usn, int c, int num)
+char	*ft_hex_p_to_str_fd(unsigned long usn, int c, int num)
 {
 	char			*str;
 	unsigned long	tmp;
@@ -40,7 +40,7 @@ char	*ft_hex_p_to_str(unsigned long usn, int c, int num)
 	return (str);
 }
 
-int	ft_do_hex_p(unsigned long usn, int c)
+int	ft_do_hex_p_fd(unsigned long usn, int c)
 {
 	int				num;
 	unsigned long	tmp;
@@ -56,15 +56,15 @@ int	ft_do_hex_p(unsigned long usn, int c)
 		num++;
 	}
 	usn = tmp;
-	str = ft_hex_p_to_str(usn, c, num);
+	str = ft_hex_p_to_str_fd(usn, c, num);
 	ft_putstr_fd(str, 1);
 	free(str);
 	return (num);
 }
 
-int	ft_do_void(unsigned long ptr, int c)
+int	ft_do_void_fd(int fd, unsigned long ptr, int c)
 {
-	ft_do_char('0');
-	ft_do_char('x');
-	return (ft_do_hex_p(ptr, c) + 2);
+	ft_do_char_fd(fd, '0');
+	ft_do_char_fd(fd, 'x');
+	return (ft_do_hex_p_fd(ptr, c) + 2);
 }
