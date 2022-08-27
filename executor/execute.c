@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:35:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 22:21:21 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:19:42 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	redir_and_exec(int *fd, int *fd_prev, int i)
 	else
 		path = ft_get_path(g_global.child[i].cmd[0]);
 	execve(path, g_global.child[i].cmd, g_global.env);
-	ft_putstr_fd("minishell: failed: command not found\n", 2);
+	ft_printf_fd(2, "minishell: %s: command not found\n",
+		g_global.child[i].cmd[0]);
 	exit(127);
 }
 

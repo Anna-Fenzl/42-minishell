@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:00 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 14:47:44 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:28:12 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ int	builtin_cd(char ***env, char **path)
 	{
 		if (chdir(path[1]) < 0)
 		{
-			ft_putstr_fd("minishell: cd: No such file or directory\n", 2);
+			ft_printf_fd(2, "minishell: cd: %s: No such file or directory\n",
+				path[1]);
 			return (EXIT_FAILURE);
 		}
 		change_pwd(env);

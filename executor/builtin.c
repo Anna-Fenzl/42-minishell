@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:47:01 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 14:22:47 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:16:22 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ int	check_if_builtin(char **cmd)
 }
 
 /*
-	executes builtin in parent in case 
+	executes builtin in parent
+	if found returns exitcode of builtin 
+	if not returns -1
 */
 int	handle_single_builtin(int tmpout)
 {
@@ -91,7 +93,8 @@ int	handle_single_builtin(int tmpout)
 			trunc_or_append(&fd, 0, g_global.child[0].outfile);
 			if (fd < 0)
 			{
-				ft_putstr_fd("Error: could not write to outfile\n", fd);
+				ft_printf_fd(2, "minishell: `%s': Permission denied\n",
+					g_global.child[0].outfile);
 				return (1);
 			}
 			dup2(fd, STDOUT_FILENO);

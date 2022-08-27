@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir_test.c                                       :+:      :+:    :+:   */
+/*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:37:34 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 16:18:44 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:24:23 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	redir_infile(int i, int *fd, int *fd_prev)
 		fd_infile = open(g_global.child[i].infile, O_RDONLY);
 		if (fd_infile < 0)
 		{
-			ft_putstr_fd("could not open infile\n", STDERR_FILENO);
+			ft_printf_fd(2, "minishell: %s: no such file or directory\n",
+				g_global.child[i].infile);
 			exit (1);
 		}
 		dup2(fd_infile, STDIN_FILENO);
@@ -58,7 +59,8 @@ void	redir_outfile(int i, int *fd, int *fd_prev)
 		trunc_or_append(&(fd_outfile), i, g_global.child[i].outfile);
 		if (fd_outfile < 0)
 		{
-			ft_putstr_fd("could not write to outfile\n", STDERR_FILENO);
+			ft_printf_fd(2, "minishell: %s: permission denied\n",
+				g_global.child[i].outfile);
 			exit (1);
 		}
 		dup2(fd_outfile, STDOUT_FILENO);

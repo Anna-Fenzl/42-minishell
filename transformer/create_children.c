@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:21:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/27 14:04:03 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:23:48 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	handle_outfile(t_list *cur, int this_pipe)
 		trunc_or_append(&fd, this_pipe, ((t_elem *)cur->content)->str);
 		if (fd < 0)
 		{
-			ft_putstr_fd("minishell: Permission denied\n", 2);
+			ft_printf_fd(2, "minishell: %s: Permission denied\n",
+				((t_elem *)cur->content)->str);
 			return (1);
 		}
 		close(fd);

@@ -16,6 +16,7 @@ EXEC:
 --> STD_ERR in exit
 
 LAST PUSH
+--> new_split in parser
 --> made ft_printf_fd for specific error messages
 --> signals
 --> test it (theres a tester now)
@@ -30,6 +31,8 @@ TESTING
 	(in docker plus readline must be installed (apt-get install libreadline6 libreadline6-dev))
 
 	current test results:
+	STDOUT: 29  STD_ERR: 17  EXIT_CODE: 1
+	yesterdays test results:
 	STD_OUT: 66  STD_ERR: 19  EXIT_CODE: 2
 	min possible errors:
 	STD_OUT: 262  STD_ERR: 275  EXIT_CODE: 385 

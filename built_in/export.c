@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:10 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/25 14:41:44 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:34:30 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	handle_export(char ***env, char *str)
 	line = check_existence(*env, str);
 	if (check_name(str) == 1)
 	{
-		ft_putstr_fd("minshell: export: not a valid identifier\n", 2);
+		ft_printf_fd(2, "minshell: export: `%s': not a valid identifier\n",
+			str);
 		return (EXIT_FAILURE);
 	}
 	else if (line >= 0)
