@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/27 14:31:52 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:59:51 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	builtin_exit(char **arg)
 	long	exitcode;
 
 	exitcode = g_global.error_code;
-	ft_putstr_fd("exit\n", 2);
+	ft_putstr_fd("exit\n", 0);
 	if (arg[1] != NULL)
 		exitcode = atoll_check(arg[1]);
 	if (ft_splitlen(arg) > 2)
@@ -85,3 +85,10 @@ int	builtin_exit(char **arg)
 	free_child(g_global.child);
 	exit(exitcode % 256);
 }
+
+// with 0
+// 412:STD_OUT: 29  STD_ERR: 3  EXIT_CODE: 1
+// with 1
+// 412:STD_OUT: 74  STD_ERR: 3  EXIT_CODE: 1 
+// with 2
+// 412:STD_OUT: 29  STD_ERR: 17  EXIT_CODE: 1 

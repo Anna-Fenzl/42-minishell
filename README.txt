@@ -1,11 +1,14 @@
 
 
+changed exit builtin to write "exit" to STDIN_FILENO
+
 ______________________________________________________________________________________
 
 TO DO
 PARSING:
 --> fix expansion
 --> using only neccassary tokens
+--> the <> REDIR5 is still considered valid
 --> norminette
 --> valgrind
 

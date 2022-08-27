@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 13:38:18 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 16:39:36 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	which_pipe(t_list *lexer);
 int		parse(char *buf, t_list **lexer);
 
 char	**ft_new_split(char *s);
-
 
 t_elem	which_token(char *input);
 
