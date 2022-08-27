@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:45:57 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 19:05:20 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/27 19:22:03 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int	err(char *msg)
 	return (1);
 }
 
+/*
+	if ';' '[]' or '()' --> does not interpret
+*/
 int	check_tokens1(t_elem *this)
 {
 	if (this->type == T_SEMI)
@@ -38,6 +41,9 @@ int	check_tokens1(t_elem *this)
 	return (0);
 }
 
+/*
+	if '&' '\' or '<>' -->does not interpret
+*/
 int	check_tokens2(t_elem *this)
 {
 	if (this->type == T_AND)
@@ -48,6 +54,11 @@ int	check_tokens2(t_elem *this)
 	if (this->type == T_BSLASH)
 	{
 		err("Minishell does not interpret \"\\\"\n");
+		return (1);
+	}
+	if (this->type == T_REDIR5)
+	{
+		err("Minishell does not interpret \"<>\"\n");
 		return (1);
 	}
 	return (0);
@@ -70,7 +81,7 @@ int	check_tokens(t_list *lexer)
 	while (current)
 	{
 		this = current->content;
-		if (check_tokens1(this) == 1 || check_tokens2(this) == 1)
+		if (check_tokens1(this) || check_tokens2(this))
 			return (1);
 		current = current->next;
 	}

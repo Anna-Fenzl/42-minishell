@@ -8,26 +8,23 @@ TO DO
 PARSING:
 --> fix expansion
 --> using only neccassary tokens
---> the <> REDIR5 is still considered valid
 --> norminette
 --> valgrind
 
 --> implement ?$ --> DONE but edge cases with spaces
+--> the <> REDIR5 is still considered valid-->DONE
 --> "| test" is not seen as a syntax error -->DONE
 
 EXEC:
 
 LAST PUSH
+--> uniform returns in syntax_error plus norm
+--> fixed builtin strncmp
 --> variable expansion in here_doc
 --> STD_ERR in exit 
 --> new_split in parser
 --> made ft_printf_fd for specific error messages
---> signals
---> test it (theres a tester now)
---> removed opening infile in transform
---> fixed exitcode with broken pipes
---> redid the pipes
---> check leaks && valgrind
+
 
 TESTING
 	run the tester with ./tester.sh m
