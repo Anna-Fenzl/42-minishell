@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 14:27:54 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 17:57:04 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:16:36 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,20 @@ char	**split_cmd_table(char *s)
 		if (s[cpt.cur_pos] != '\"' && s[cpt.cur_pos] != '\'')
 		{
 			not_in_quotes(s, &cpt);
-			str[cpt.line_nmb++] = ft_strdupn(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
+			str[cpt.line_nmb++] = ft_strdupn
+				(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
 		}
 		else if (s[cpt.cur_pos] == '\"')
 		{
 			delete_quotes(s, &cpt, '\"');
-			str[cpt.line_nmb++] = ft_strdupn(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
+			str[cpt.line_nmb++] = ft_strdupn
+				(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
 		}
 		else if (s[cpt.cur_pos] == '\'')
 		{
 			delete_quotes(s, &cpt, '\'');
-			str[cpt.line_nmb++] = ft_strdupn(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
+			str[cpt.line_nmb++] = ft_strdupn
+				(s + cpt.prev_pos, cpt.cur_pos - cpt.prev_pos);
 		}
 	}
 	str[cpt.line_nmb] = NULL;

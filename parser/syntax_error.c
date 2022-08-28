@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:31:15 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 19:16:01 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:21:34 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	syntax_error_fd_pipe(t_elem *this, t_elem *next)
 {
 	if (this->type == T_REDIR1 || this->type == T_REDIR2
 		|| this->type == T_REDIR3
-		|| this->type == T_REDIR4 || this->type == T_REDIR5)
+		|| this->type == T_REDIR4)
 	{
 		if (next->type != T_FD && next->type != T_DELIMITER)
 		{

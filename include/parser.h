@@ -6,41 +6,36 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:05:06 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 19:16:46 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:14:23 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-// ONLY NEED CMD the 4 REDIRS and DELIM
-// but ofc the syntax errors too :)
 typedef enum e_tokens
 {
+	T_SPACE,
+	T_ARGS,
+	T_REDIR1,
+	T_REDIR2,
+	T_REDIR3,
+	T_REDIR4,
+	T_REDIR5,
+	T_FD,
+	T_DELIMITER,
+	T_CMD,
+	T_OPT,
+	T_PIPE,
 	T_DQ,
 	T_SQ,
 	T_SEMI,
 	T_AND,
 	T_BSLASH,
-	T_SPACE,
-	T_ARGS,
-	T_REDIR5,	//<> syntax error
-	T_REDIR1,	//> truncate
-	T_REDIR2,	//<
-	T_REDIR3,	//>> append
-	T_REDIR4,	//<< heredoc
-	T_CMD,
-	T_FD,		//>> > < STIMMT
-	T_OPT,		// flags ARGS
-	T_DELIMITER,// STIMMT
-	T_PIPE,
-	T_EQUAL,	//ARGS wie string
-	T_OP_BRA,	//wie strind
-	T_CL_BRA,	//wie string
-	T_OP_PAR,	//-->error
-	T_CL_PAR,	//-->error
-	// T_ENV,
-	// T_RES,
+	T_OP_BRA,
+	T_CL_BRA,
+	T_OP_PAR,
+	T_CL_PAR,
 	T_NULL
 }			t_tokens;
 

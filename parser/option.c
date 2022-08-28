@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:30:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 16:05:35 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:19:49 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	is_option(t_list *lexer)
 			while (this->str[i])
 			{
 				if (this->str[i] != 'n')
-					break;
+					break ;
 				i++;
 			}
 			apply_option(this, i, prev);

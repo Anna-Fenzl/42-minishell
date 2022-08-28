@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:47:18 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 17:43:31 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:18:40 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 
 void	in_env(char **split, int i)
 {
-	// int		j;
-	// char	**tmp;
-
-	// j = 0;
-	// while (g_global.env[j])
-	// {
-	// 	tmp = ft_split(g_global.env[j], '=');//HOME = /home/sar
-	// 	if (!ft_strncmp(split[i] + 1, tmp[0]//+`1 because our path begins with /
-	// 			, ft_strlen(split[i] + 1)))
-	// 	{
-	// 		free(split[i]);
-	// 		split[i] = ft_strdup(g_global.env[j] + len);//if HOME == HOME we clean our split and put env inside
-	// 	}
-	// 	ft_free2(tmp);
-	// 	j++;
-	// }
 	int		line;
 	char	*str;
 	int		j;
@@ -53,14 +37,14 @@ void	not_in_env(char **split, int i, int len)
 
 	if (split[i][0] == '$' && len != 1)
 	{
-		if (split[i][1] == '?' && len == 2)// true or false
+		if (split[i][1] == '?' && len == 2)
 		{
 			free(split[i]);
 			res = ft_itoa(g_global.error_code);
 			split[i] = ft_strdup(res);
 			free(res);
 		}
-		else//just print
+		else
 		{
 			free(split[i]);
 			split[i] = ft_strdup("");
@@ -73,7 +57,7 @@ void	not_in_env(char **split, int i, int len)
  * INPUT:
  * RETURN:
  * DESCRIPTION: if we find the $ than we check the env
- *
+ *	else if: if $"" the $ is removed
  *
  ****************/
 char	**replace_var(char **split_q, int index)
@@ -96,7 +80,8 @@ char	**replace_var(char **split_q, int index)
 		}
 		else if (split[i][0] == '$')
 		{
-			if (split_q[index + 1] && (split_q[index + 1][0] == '\'' || split_q[index + 1][0] == '\"'))
+			if (split_q[index + 1] && (split_q[index + 1][0] == '\''
+				|| split_q[index + 1][0] == '\"'))
 				split[i] = ft_strdup("");
 		}
 		i++;

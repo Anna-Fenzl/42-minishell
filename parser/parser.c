@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 19:10:17 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:20:29 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,10 @@ void	which_pipe(t_list *lexer)
 	}
 }
 
+/*
+	for some reason first node of lexer is always NULL
+	--> removes that node
+*/
 void	rem_first(t_list **lexer)
 {
 	t_list	*tmp;

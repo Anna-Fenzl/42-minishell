@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:37:59 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/26 20:34:05 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:20:50 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ int	lexing_quotes(char **input)
 	return (1);
 }
 
-
 /***************
  * NAME: which_quotes
  * INPUT: list lexer
  * RETURN:
- * DESCRIPTION: check which quotes we have double or single, 2-> is single 1 -> is double
+ * DESCRIPTION: check which quotes we have double or single
+ * 				2-> is single 1 -> is double
  *
  *
  ****************/

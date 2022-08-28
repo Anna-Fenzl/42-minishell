@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:40:08 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/21 16:48:20 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:15:43 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	add_lexer(t_list **lexer, char *input, int len, t_tokens type)
 	if (!new_elem)
 		return ;
 	new_elem->str = ft_strdup(str);
-	new_elem->str[len] = 0;//end of the string
+	new_elem->str[len] = 0;
 	new_elem->len = len;
 	new_elem->type = type;
 	new_elem->this_pipe = 0;
@@ -43,7 +43,8 @@ void	add_lexer(t_list **lexer, char *input, int len, t_tokens type)
 /***************
  * NAME: fill_lexer
  * INPUT: input -> buf from terminal input, lexer -> t_list struct
- * RETURN: true if brackets are closed and we could fill the list or false if brackets not closed
+ * RETURN: true if brackets are closed
+ * 			we could fill the list or false if brackets not closed
  * DESCRIPTION: we fill our list with commands
  *
  *
@@ -139,7 +140,8 @@ void	add_to_new_lex(t_list **lexer, t_elem *this)
 
 /***************
  * NAME: change_lexer
- * INPUT: tmp where we have our input, lexer where we put only the commands from the input
+ * INPUT: tmp where we have our input,
+ * 		lexer where we put only the commands from the input
  * RETURN:
  * DESCRIPTION: if it's not the space add the command to new lexer
  *
