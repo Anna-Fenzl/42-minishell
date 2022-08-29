@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:40:08 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/28 16:15:43 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/29 14:31:04 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ int	fill_lexer(char *input, t_list **lexer)
 	while (*input)
 	{
 		this = which_token(input);
-		if ((this.str || *input == '\"' || *input == '\'') && last != input) // in case it in the begin of cmd line its bug that we shuld ignore and dont in lex,
-			add_lexer(lexer, last, input - last, T_ARGS); // in case this spec char on the right place push back in the list
-		if (this.str) // in case this,str exist != nill
+		if ((this.str || *input == '\"' || *input == '\'') && last != input)
+			add_lexer(lexer, last, input - last, T_ARGS);
+		if (this.str)
 		{
-			input = input + this.len; // push pointer adress (move in array element of the size of this len)
-			add_lexer(lexer, this.str, this.len, this.type); // push back in the list
-			last = input; // last mean prev input that we append in the list
+			input = input + this.len;
+			add_lexer(lexer, this.str, this.len, this.type);
+			last = input;
 		}
-		else if (!lexing_quotes(&input)) //if brackets are not closed
+		else if (!lexing_quotes(&input))
 			return (0);
-		else // other increment input
+		else
 			input++;
 	}
-	if (last != input) // check that we not in the begin of input so prev is same as current push back
+	if (last != input)
 		add_lexer(lexer, last, input - last, T_ARGS);
 	return (1);
 }
@@ -93,12 +93,12 @@ void	get_new_lexer(t_list *lexer)
 	current = lexer->next;
 	while (current)
 	{
-		this = current->content;//current content
+		this = current->content;
 		if (this->type == T_ARGS)
 		{
 			if (current->next)
 			{
-				next = current->next->content;// next content
+				next = current->next->content;
 				while (next->type == T_ARGS && current->next)
 				{
 					next = current->next->content;

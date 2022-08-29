@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:45:57 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/27 19:22:03 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/29 12:17:08 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@ int	err(char *msg)
 	return (1);
 }
 
-/*
-	if ';' '[]' or '()' --> does not interpret
-*/
+/***************
+ * NAME: check_tokens1
+ * INPUT:
+ * RETURN: if we find the token that we can't interpret return 1
+ * DESCRIPTION: if ';' '[]' or '()' --> does not interpret
+ *
+ *
+ ****************/
 int	check_tokens1(t_elem *this)
 {
 	if (this->type == T_SEMI)
@@ -41,9 +46,14 @@ int	check_tokens1(t_elem *this)
 	return (0);
 }
 
-/*
-	if '&' '\' or '<>' -->does not interpret
-*/
+/***************
+ * NAME: check_tokens2
+ * INPUT:
+ * RETURN: if we find the token that we can't interpret return 1
+ * DESCRIPTION: if '&' '\' or '<>' -->does not interpret
+ *
+ *
+ ****************/
 int	check_tokens2(t_elem *this)
 {
 	if (this->type == T_AND)

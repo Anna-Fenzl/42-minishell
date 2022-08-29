@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
+#    By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/27 19:05:45 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/29 14:52:18 by aiarinov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 RM := rm -f
 
 SRCMAIN = 	main.c debug.c\
@@ -24,8 +24,10 @@ SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c \
 			./parser/delete_quotes.c ./parser/expand_env.c \
 			./parser/free.c ./parser/lexer.c ./parser/option.c \
 			./parser/parser.c ./parser/quotes.c ./parser/token.c \
-			./parser/syntax_error.c ./parser/new_split.c
-		
+			./parser/syntax_error.c ./parser/new_split.c \
+			./parser/delete_quotes_utils.c ./parser/replace_var_env.c \
+			./parser/parse_lexer.c
+
 SRCTRANS =	./transformer/transform.c ./transformer/create_children.c \
 			./transformer/infile.c
 
