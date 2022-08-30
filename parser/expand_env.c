@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:47:18 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/28 16:18:40 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/30 15:02:23 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	in_env(char **split, int i)
 			j++;
 		if (str != NULL && str[j] == '=')
 			j++;
+		free(split[i]);
 		split[i] = ft_strdup(&str[j]);
 	}
 }
@@ -52,6 +53,12 @@ void	not_in_env(char **split, int i, int len)
 	}
 }
 
+void	check_env(char **split, int i, int len)
+{
+	in_env(split, i);
+	not_in_env(split, i, len);
+}
+
 /***************
  * NAME: replace_var
  * INPUT:
@@ -74,15 +81,15 @@ char	**replace_var(char **split_q, int index)
 	{
 		len = ft_strlen(split[i]);
 		if (split[i][0] == '$' && len != 1)
-		{
-			in_env(split, i);
-			not_in_env(split, i, len);
-		}
+			check_env(split, i, len);
 		else if (split[i][0] == '$')
 		{
 			if (split_q[index + 1] && (split_q[index + 1][0] == '\''
 				|| split_q[index + 1][0] == '\"'))
+			{
+				free(split[i]);
 				split[i] = ft_strdup("");
+			}
 		}
 		i++;
 	}
