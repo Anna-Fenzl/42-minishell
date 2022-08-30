@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:12:53 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 19:25:09 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/30 16:30:49 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 /*
 	NOT IN INTERACTIVE mode
-	Ctrl -C (SIGINT) should stop the child (SIGTERM) i guess
-	Ctrl -\ (SIGQUIT) should default
+	Ctrl -C (SIGINT) should be default
+	Ctrl -\ (SIGQUIT) should be default
 	Ctrl -D 
 */
 void	set_signals(void)

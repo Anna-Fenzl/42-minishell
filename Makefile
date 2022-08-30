@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+         #
+#    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/30 14:49:43 by aiarinov         ###   ########.fr        #
+#    Updated: 2022/08/30 18:55:05 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCPARSE =	./parser/check_tokens.c ./parser/cmd_or_fd.c \
 			./parser/parse_lexer.c
 
 SRCTRANS =	./transformer/transform.c ./transformer/create_children.c \
-			./transformer/infile.c
+			./transformer/infile.c ./transformer/here_doc.c
 
 SRCBUILT =	./built_in/cd.c ./built_in/echo.c ./built_in/env.c \
 		./built_in/exit.c ./built_in/export.c ./built_in/pwd.c \

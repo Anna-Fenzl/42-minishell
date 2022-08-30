@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/27 19:09:44 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/30 19:08:19 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	minishell(void)
 			g_global.buf = readline("minishell> ");
 		else
 			g_global.buf = get_next_line(0);
+		signal(SIGINT, SIG_IGN);
 		if (g_global.buf == NULL)
 			exit(g_global.error_code);
 		handle_history(g_global.buf);
@@ -39,7 +40,7 @@ void	minishell(void)
 			free_child(g_global.child);
 		}
 		else
-			g_global.error_code = 2;
+			g_global.error_code = 258;
 		handle_free(g_global.buf, g_global.lexer);
 	}
 }

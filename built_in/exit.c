@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:15:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/27 14:59:51 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/30 19:18:14 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 static void	ft_error(char *str)
 {
-	if (str != NULL)
-		ft_printf_fd(2, "minishell: exit: %s: numeric argument required\n", str);
+	ft_printf_fd(2, "minishell: exit: %s: numeric argument required\n", str);
 	handle_free(g_global.buf, g_global.lexer);
 	free_child(g_global.child);
 	exit (255);
 }
 
-static long	ft_numcpy(int i, long res, char *p, char *str)
+static long long	ft_numcpy(int i, long long res, char *p, char *str)
 {
 	while (p[i] != '\0')
 	{
@@ -29,7 +28,7 @@ static long	ft_numcpy(int i, long res, char *p, char *str)
 		{
 			res = res * 10 + p[i] - '0';
 			i++;
-			if (i > 19 && res > LLONG_MAX)
+			if (res < 0)
 				ft_error(str);
 		}
 		else
@@ -60,8 +59,6 @@ long long	atoll_check(char *str)
 		i++;
 	}
 	res = ft_numcpy(i, res, p, str);
-	if (res > LLONG_MAX)
-		ft_error(str);
 	return (res * n);
 }
 

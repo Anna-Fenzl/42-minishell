@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 19:11:55 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/26 19:23:51 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/30 18:50:22 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 static void	set_newline(int signo)
 {
 	if (signo == SIGINT)
+	{
 		write(1, "\nminishell> ", 12);
+		g_global.error_code = 1;
+	}
 }
 
 /*
@@ -33,6 +36,7 @@ void	handle_signals(void)
 	term.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	sig.sa_handler = set_newline;
+	sig.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &sig, NULL);
 	signal(SIGQUIT, SIG_IGN);
 }
