@@ -6,7 +6,7 @@
 /*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:40:08 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/29 14:31:04 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:10:08 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	fill_lexer(char *input, t_list **lexer)
  * NAME: get_new_lexer
  * INPUT: t_list strcut
  * RETURN:
- * DESCRIPTION:
+ * DESCRIPTION: put all words to T_ARGS and spaces to T_SPACE
  *
  *
  ****************/
@@ -143,7 +143,7 @@ void	add_to_new_lex(t_list **lexer, t_elem *this)
  * INPUT: tmp where we have our input,
  * 		lexer where we put only the commands from the input
  * RETURN:
- * DESCRIPTION: if it's not the space add the command to new lexer
+ * DESCRIPTION: if it's not the space -> add the command to new lexer
  *
  *
  ****************/

@@ -6,7 +6,7 @@
 /*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:33:47 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/29 17:56:52 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/30 14:06:22 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_global
 	t_list	*lexer;
 	int		children_num;
 	int		error_code;
-	t_elem	tokens[100];
 }				t_global;
 
 // debug
