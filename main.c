@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:59:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/30 19:08:19 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/08/31 13:06:21 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 t_global	g_global;
 
-// if (!parse(g_global.buf, &lexer))
-// 	g_global.error_code = 258;
-// print_lexer(lexer);
-// handle_free(g_global.buf, lexer);
 void	minishell(void)
 {
 	while (1)

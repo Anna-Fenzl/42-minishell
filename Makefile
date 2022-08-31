@@ -6,7 +6,7 @@
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 17:03:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/08/30 18:55:05 by afenzl           ###   ########.fr        #
+#    Updated: 2022/08/31 13:04:57 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM := rm -f
 
-SRCMAIN = 	main.c debug.c\
+SRCMAIN = 	main.c\
 
 SRCSETUP = ./setup/env.c setup/utils.c
 

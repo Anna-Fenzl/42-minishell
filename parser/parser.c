@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:23:45 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/08/29 14:51:39 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:25:23 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	check_fill_lexer(char *buf, t_list	*tmp)
+int	check_fill_lexer(char *buf, t_list	*tmp)
 {
 	if (!fill_lexer(buf, &tmp))
 	{
 		free_lexer(tmp);
 		ft_putstr_fd("Quotes are not closed\n", 2);
-		err("EXIT_FAILURE");
+		return (1);
 	}
+	return (0);
 }
 
 /***************
@@ -93,7 +94,8 @@ int	parse(char *buf, t_list **lexer)
 	t_list	*tmp;
 
 	tmp = ft_lstnew(NULL);
-	check_fill_lexer(buf, tmp);
+	if (check_fill_lexer(buf, tmp))
+		return (EXIT_FAILURE);
 	get_new_lexer(tmp);
 	change_lexer(tmp, lexer);
 	free_lexer(tmp);
