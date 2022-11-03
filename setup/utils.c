@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 19:11:55 by afenzl            #+#    #+#             */
-/*   Updated: 2022/08/31 17:24:34 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/11/03 16:57:47 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	set_newline(int signo)
 	if (signo == SIGINT)
 	{
 		write(1, "\nminishell> ", 12);
-		free_lexer(g_global.lexer);
-		g_global.lexer = NULL;
 		g_global.error_code = 1;
 	}
 }
