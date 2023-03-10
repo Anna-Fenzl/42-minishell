@@ -1,7 +1,7 @@
 # minishell
 This is a project for [42Heilbronn](https://www.42heilbronn.de/en/curriculum/) school's curriculum.
 
-The goal of the project is to write a program __creating a simple shell__, that provides a command-line interface for users to interact with the operating system.
+The goal of this team-project is to write a program __creating a simple shell__, that provides a command-line interface for users to interact with the operating system. I was responsible for the execution part, my partner (Anna Iarinov)[] did the parser.
 
 ## Features
 + Display a `prompt` when waiting for a new command
@@ -25,15 +25,9 @@ The goal of the project is to write a program __creating a simple shell__, that 
 ## Description
 **run _`make`_**
 
+Before running make make sure that you have readline library installed and found by the Makefile.
 The program will be executed as follows:
 
 __`./minishell`__
 
 now just use it as if it would be Bash.
-
-## What i learned:
-+ deeper knowledge on how `bash's behavior`
-+ handling `signals`, such as SIGINT or SIGQUIT
-+ how and when enviroment variables are expanded
-+ how to structure bigger projects
-
