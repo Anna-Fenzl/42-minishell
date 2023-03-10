@@ -1,7 +1,7 @@
 # minishell
 This is a project for [42Heilbronn](https://www.42heilbronn.de/en/curriculum/) school's curriculum.
 
-The goal of this team-project is to write a program __creating a simple shell__, that provides a command-line interface for users to interact with the operating system. I was responsible for the execution part, my partner (Anna Iarinov)[https://github.com/iarinov] did the parser.
+The goal of this team-project is to write a program __creating a simple shell__, that provides a command-line interface for users to interact with the operating system. I was responsible for the execution part, my partner [Anna Iarinov](https://github.com/iarinov) did the parser.
 
 ## Features
 + Display a `prompt` when waiting for a new command
