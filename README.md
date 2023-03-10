@@ -30,4 +30,10 @@ The program will be executed as follows:
 
 __`./minishell`__
 
-now just use it as if it would be Bash.
+## What i learned
++ What are `signals` and how to use them
++ `Redirections` in bash
++ `Variable expansion` in bash
++ How does the bash interpret `single and double quotes`
++ What's a `parser`
++ Usage of `builtin commands of` bash
