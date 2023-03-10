@@ -25,7 +25,7 @@ The goal of this team-project is to write a program __creating a simple shell__,
 ## Description
 **run _`make`_**
 
-Before running make make sure that you have readline library installed and found by the Makefile.
+Before running minishell make sure that you have readline library installed and found by the Makefile.
 The program will be executed as follows:
 
 __`./minishell`__
