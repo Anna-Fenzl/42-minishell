@@ -15,7 +15,7 @@ The goal of this team-project is to write a program __creating a simple shell__,
 + Handle the `signals` ctrl-C, ctrl-D and ctrl-\ which should behave like in bash
 + `Built-in commands`:
    - __echo__ with option -n
-   - __cd__ with only a relative or absolute path
+   - __cd__ with a relative or absolute path
    - __pwd__
    - __export__
    - __unset__
