@@ -36,4 +36,4 @@ __`./minishell`__
 + `Variable expansion` in bash
 + How does the bash interpret `single and double quotes`
 + What's a `parser`
-+ Usage of `builtin commands of` bash
++ In depth insight into `builtin commands` of Bash
